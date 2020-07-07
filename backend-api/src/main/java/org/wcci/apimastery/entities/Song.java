@@ -17,11 +17,12 @@ public class Song {
     private Artist artist;
     @ManyToOne
     private Album album;
-    
-    public Song(String songName, String duration, Artist artist) {
+
+    public Song(String songName, String duration, Artist artist, Album album) {
         this.songName = songName;
         this.duration = duration;
         this.artist = artist;
+        this.album = album;
     }
 
     public Long getId(){
