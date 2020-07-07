@@ -3,6 +3,7 @@ package org.wcci.apimastery.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Song {
@@ -12,9 +13,15 @@ public class Song {
     private String songName;
     private String duration;
 
-    public Song(String songName, String duration) {
+    @ManyToOne
+    private Artist artist;
+    @ManyToOne
+    private Album album;
+    
+    public Song(String songName, String duration, Artist artist) {
         this.songName = songName;
         this.duration = duration;
+        this.artist = artist;
     }
 
     public Long getId(){
@@ -27,6 +34,14 @@ public class Song {
 
     public String getDuration() {
         return duration;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public Album getAlbum() {
+        return album;
     }
 
     public Song(){

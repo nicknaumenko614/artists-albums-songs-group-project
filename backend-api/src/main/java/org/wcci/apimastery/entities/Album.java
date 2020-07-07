@@ -1,8 +1,7 @@
 package org.wcci.apimastery.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -11,6 +10,9 @@ public class Album {
     private Long id;
     private String albumName;
     private String recordLabel;
+    @OneToMany(mappedBy = "album")
+    private List<Song> songs;
+
 
     public Album(String albumName, String recordLabel) {
         this.albumName = albumName;
