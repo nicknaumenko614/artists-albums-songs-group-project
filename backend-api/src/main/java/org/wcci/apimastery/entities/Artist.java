@@ -14,6 +14,8 @@ public class Artist {
     private String artistName;
     @OneToMany(mappedBy = "artist")
     private List<Album> albums;
+//    @OneToMany(mappedBy = "artist")
+//    private List<Song> songs;
 
 
     public Artist(String artistName) {

@@ -10,6 +10,8 @@ public class Album {
     private Long id;
     private String albumName;
     private String recordLabel;
+    @ManyToOne
+    private Artist artist;
     @OneToMany(mappedBy = "album")
     private List<Song> songs;
 
