@@ -14,6 +14,8 @@ public class Album {
     private Artist artist;
     @OneToMany(mappedBy = "album")
     private List<Song> songs;
+    @ManyToOne
+    private Artist artist;
 
 
     public Album(String albumName, String recordLabel) {
