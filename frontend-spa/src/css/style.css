@@ -1,3 +1,7 @@
 body{
-    background-image: url(/frontend-spa/src/images/music-library.jpg);
+    background-image: url(/frontend-spa/src/images/music-library.jpg) ;
+    background-size: 100% ;
+    float: left;
+    color: white;
+    
 }
