@@ -4,16 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 public class Artist {
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     private String artistName;
     @OneToMany(mappedBy = "artist")
-    private List<Album> albums;
+    private Collection<Album> albums;
 //    @OneToMany(mappedBy = "artist")
 //    private List<Song> songs;
 

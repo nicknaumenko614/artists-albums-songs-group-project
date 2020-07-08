@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 public class Song {
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     private String songName;
     private String duration;
 

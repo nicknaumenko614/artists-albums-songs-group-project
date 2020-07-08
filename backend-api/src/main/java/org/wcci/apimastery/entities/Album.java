@@ -1,21 +1,21 @@
 package org.wcci.apimastery.entities;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 public class Album {
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     private String albumName;
     private String recordLabel;
     @ManyToOne
     private Artist artist;
     @OneToMany(mappedBy = "album")
-    private List<Song> songs;
-    @ManyToOne
-    private Artist artist;
+    private Collection<Song> songs;
+
 
 
     public Album(String albumName, String recordLabel) {
