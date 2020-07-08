@@ -19,6 +19,6 @@ public Collection<Artist> retrieveAllArtists(){
         return (Collection<Artist>) artistRepo.findAll();
 }
 public Artist retrieveArtistById (long id){
-        return artistRepo.findAllById(id).get();
+        return artistRepo.findById(id).get();
 }
 }
