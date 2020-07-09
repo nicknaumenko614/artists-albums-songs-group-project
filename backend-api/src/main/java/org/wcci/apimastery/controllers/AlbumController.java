@@ -12,14 +12,13 @@ import java.util.Collection;
 @RestController
 public class AlbumController {
     AlbumStorage albumStorage;
-    AlbumRepository albumRepo;
 
-    public AlbumController(AlbumStorage albumStorage, AlbumRepository albumRepo){
+    public AlbumController(AlbumStorage albumStorage) {
         this.albumStorage = albumStorage;
-        this.albumRepo = albumRepo;
     }
-    @GetMapping("/api/album/")
-    public Collection<Album> retrieveAllAlbums(){
+
+    @GetMapping("/api/albums/")
+    public Collection<Album> retrieveAllAlbums() {
         return albumStorage.retrieveAllAlbums();
     }
 

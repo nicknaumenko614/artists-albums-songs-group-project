@@ -11,14 +11,13 @@ import java.util.Collection;
 @RestController
 public class ArtistController {
     ArtistStorage artistStorage;
-    ArtistRepository artistRepo;
 
-    public ArtistController(ArtistStorage artistStorage, ArtistRepository artistRepo) {
+    public ArtistController(ArtistStorage artistStorage) {
         this.artistStorage = artistStorage;
-        this.artistRepo = artistRepo;
     }
-    @GetMapping("/api/artist/")
-    public Collection<Artist>retrieveAllArtists(){
+
+    @GetMapping("/api/artists/")
+    public Collection<Artist> retrieveAllArtists() {
         return artistStorage.retrieveAllArtists();
     }
 }

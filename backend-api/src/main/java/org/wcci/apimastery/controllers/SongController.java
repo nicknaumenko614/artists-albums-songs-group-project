@@ -11,14 +11,13 @@ import java.util.Collection;
 @RestController
 public class SongController {
     SongStorage songStorage;
-    SongRepository songRepo;
 
-    public SongController(SongStorage songStorage, SongRepository songRepo) {
+    public SongController(SongStorage songStorage) {
         this.songStorage = songStorage;
-        this.songRepo = songRepo;
     }
-    @GetMapping("/api/song/")
-    public Collection<Song>retrieveAllSongs(){
+
+    @GetMapping("/api/songs/")
+    public Collection<Song> retrieveAllSongs() {
         return songStorage.retrieveAllSongs();
     }
 }

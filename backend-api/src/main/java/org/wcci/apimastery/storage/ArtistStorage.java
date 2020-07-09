@@ -9,16 +9,24 @@ import java.util.Collection;
 @Service
 public class ArtistStorage {
     private ArtistRepository artistRepo;
-    public ArtistStorage(ArtistRepository artistRepo){
+
+    public ArtistStorage(ArtistRepository artistRepo) {
         this.artistRepo = artistRepo;
     }
-public Artist save (Artist artist){
+
+    public Artist saveOrUpdate(Artist artist) {
         return artistRepo.save(artist);
-}
-public Collection<Artist> retrieveAllArtists(){
+    }
+
+    public Collection<Artist> retrieveAllArtists() {
         return (Collection<Artist>) artistRepo.findAll();
-}
-public Artist retrieveArtistById (long id){
+    }
+
+    public Artist retrieveArtistById(long id) {
         return artistRepo.findById(id).get();
-}
+    }
+
+    public void deleteArtistById(long id) {
+        artistRepo.deleteById(id);
+    }
 }
