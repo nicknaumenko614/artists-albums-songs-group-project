@@ -22,7 +22,7 @@ private ArtistStorage underTest;
     @Test
     public void shouldBeAbleToSaveNewArtist(){
         Artist testArtist = new Artist("Test Artist", "www.testurl.com");
-        underTest.saveOrUpdate(testArtist);
+        underTest.save(testArtist);
         verify(artistRepo).save(testArtist);
     }
 }

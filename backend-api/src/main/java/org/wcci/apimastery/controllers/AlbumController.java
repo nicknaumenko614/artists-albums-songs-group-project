@@ -1,10 +1,7 @@
 package org.wcci.apimastery.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.wcci.apimastery.entities.Album;
-import org.wcci.apimastery.repositories.AlbumRepository;
 import org.wcci.apimastery.storage.AlbumStorage;
 
 import java.util.Collection;
@@ -19,6 +16,20 @@ public class AlbumController {
 
     @GetMapping("/api/albums/")
     public Collection<Album> retrieveAllAlbums() {
+        return albumStorage.retrieveAllAlbums();
+    }
+
+    @GetMapping("/api/albums/{id}")
+    public Album retrieveAlbumById(@PathVariable long id){
+        return albumStorage.retrieveAlbumById(id);
+    }
+    @PostMapping("/api/albums/add/")
+    public Album addAlbum(@RequestBody Album album){
+        return albumStorage.save(album);
+    }
+    @DeleteMapping("/api/albums/delete/")
+    public Collection<Album> deleteAlbum(@PathVariable long id) {
+        albumStorage.deleteAlbumById(id);
         return albumStorage.retrieveAllAlbums();
     }
 

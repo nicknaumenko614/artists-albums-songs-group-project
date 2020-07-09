@@ -14,7 +14,7 @@ public class ArtistStorage {
         this.artistRepo = artistRepo;
     }
 
-    public Artist saveOrUpdate(Artist artist) {
+    public Artist save(Artist artist) {
         return artistRepo.save(artist);
     }
 

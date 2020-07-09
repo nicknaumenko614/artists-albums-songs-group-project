@@ -14,7 +14,7 @@ public class AlbumStorage {
         this.albumRepo = albumRepo;
     }
 
-    public Album saveOrUpdate(Album album) {
+    public Album save(Album album) {
         return albumRepo.save(album);
     }
 

@@ -14,7 +14,7 @@ public class SongStorage {
         this.songRepo = songRepo;
     }
 
-    public Song saveOrUpdate(Song song) {
+    public Song save(Song song) {
         return songRepo.save(song);
     }
 
