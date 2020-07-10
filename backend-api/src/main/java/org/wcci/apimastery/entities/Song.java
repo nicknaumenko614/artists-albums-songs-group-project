@@ -1,5 +1,7 @@
 package org.wcci.apimastery.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +15,7 @@ public class Song {
     private long id;
     private String songName;
     private String duration;
+    @JsonIgnore
 
     @ManyToOne
     private Album album;

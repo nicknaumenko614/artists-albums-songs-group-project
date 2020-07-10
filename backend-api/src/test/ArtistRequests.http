@@ -1,0 +1,68 @@
+GET http://localhost:8080/api/artists/
+
+###
+
+GET http://localhost:8080/api/albums/
+
+###
+GET http://localhost:8080/api/artists/1/
+
+###
+
+GET http://localhost:8080/api/artists/2/
+
+###
+GET http://localhost:8080/api/artists/101/
+
+###
+
+
+
+
+###
+POST http://localhost:8080/api/artists/add/
+Content-Type: application/json
+
+{
+  "artistName": "New Test Artist",
+  "imageUrl": "www.testurl1.com"
+
+}
+
+###
+
+POST http://localhost:8080/api/albums/add/
+Content-Type: application/json
+
+{
+  "albumName": "New Test Artist Album",
+  "recordLabel": "Sony",
+  "imageUrl": "www.testurlnta.com",
+  "artist": "New Test Artist"
+}
+
+###
+
+PATCH http://localhost:8080/api/artists/1/addAlbum/
+Content-Type: application/json
+
+{
+  "name": "Test Album",
+  "price": 12.34
+}
+
+###
+
+PATCH http://localhost:8080/api/artists/1/addAlbum/
+Content-Type: application/json
+
+{
+  "artistName": "Bjork",
+  "albumName": "Bjork new album",
+  "recordLabel": "Sony",
+  "imageUrl": "bjork.com"
+}
+
+
+###
+DELETE http://localhost:8080/api/artists/2/

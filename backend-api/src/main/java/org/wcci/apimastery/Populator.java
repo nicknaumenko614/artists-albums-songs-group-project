@@ -22,12 +22,12 @@ public class Populator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Artist artist1 = new Artist("Bjork", "www.google.com");
-        Artist artist2 = new Artist("The Mars Volta", "www.google.com");
+        Artist artist1 = new Artist("Bjork", "www.artist1.com");
+        Artist artist2 = new Artist("The Mars Volta", "www.artist2.com");
         artistRepo.save(artist1);
         artistRepo.save(artist2);
-        Album album1 = new Album("Vulnicara", "Capital", "www.google.com", artist1);
-        Album album2 = new Album("Francis", "Columbia", "www.google.com", artist2);
+        Album album1 = new Album("Vulnicara", "Capital", "www.album1.com", artist1);
+        Album album2 = new Album("Francis", "Columbia", "www.album2.com", artist2);
         albumRepo.save(album1);
         albumRepo.save(album2);
         Song song1 = new Song("Stonemilker", "4:20", album1);

@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -61,6 +60,10 @@ public class Artist {
     @Override
     public int hashCode() {
         return Objects.hash(id, artistName);
+    }
+
+    public Collection<Album> getAlbum() {
+        return albums;
     }
 }
 
