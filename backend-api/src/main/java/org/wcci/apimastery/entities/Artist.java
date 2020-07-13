@@ -62,8 +62,5 @@ public class Artist {
         return Objects.hash(id, artistName);
     }
 
-    public Collection<Album> getAlbum() {
-        return albums;
-    }
 }
 
