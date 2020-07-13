@@ -11,7 +11,6 @@ import java.util.Collection;
 @RestController
 public class AlbumController {
     AlbumStorage albumStorage;
-    ArtistStorage artistStorage;
 
     public AlbumController(AlbumStorage albumStorage) {
         this.albumStorage = albumStorage;
@@ -35,14 +34,14 @@ public class AlbumController {
         albumStorage.deleteAlbumById(id);
         return albumStorage.retrieveAllAlbums();
     }
-    @PatchMapping("/api/albums/{id}/addArtist/")
-    public Album addArtistToAlbum(@PathVariable long id, @RequestBody Artist artist){
-        Album album = albumStorage.retrieveAlbumById(id);
-        Artist artistToAdd = new Artist(artist.getArtistName(), artist.getImageUrl());
-        artistStorage.save(artistToAdd);
-
-        return (Album) artistToAdd.getAlbum();
-    }
+//    @PatchMapping("/api/albums/{id}/addArtist/")
+//    public Album addArtistToAlbum(@PathVariable long id, @RequestBody Artist artist){
+//        Album album = albumStorage.retrieveAlbumById(id);
+//        Artist artistToAdd = new Artist(artist.getArtistName(), artist.getImageUrl());
+//        artistStorage.save(artistToAdd);
+//
+//        return (Album) artistToAdd.getAlbum();
+//    }
 
 //    @PatchMapping("/api/artists/{id}/addAlbum/")
 //    public Artist addAlbumToArtist(@PathVariable long id, @RequestBody Album album){

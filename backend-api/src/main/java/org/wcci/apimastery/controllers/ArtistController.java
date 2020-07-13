@@ -14,8 +14,9 @@ public class ArtistController {
     ArtistStorage artistStorage;
     AlbumStorage albumStorage;
 
-    public ArtistController(ArtistStorage artistStorage) {
+    public ArtistController(ArtistStorage artistStorage, AlbumStorage albumStorage) {
         this.artistStorage = artistStorage;
+        this.albumStorage = albumStorage;
     }
 
     @GetMapping("/api/artists/")
@@ -36,7 +37,7 @@ public class ArtistController {
     @PatchMapping("/api/artists/{id}/addAlbum/")
     public Artist addAlbumToArtist(@PathVariable long id, @RequestBody Album album){
         Artist artist = artistStorage.retrieveArtistById(id);
-        Album albumToAdd = new Album(album.getAlbumName(), album.getRecordLabel(), album.getImageUrl(), album.getArtist());
+        Album albumToAdd = new Album(album.getAlbumName(), album.getRecordLabel(), album.getImageUrl(), artist);
         albumStorage.save(albumToAdd);
 
         return albumToAdd.getArtist();
