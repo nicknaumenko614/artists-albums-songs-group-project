@@ -1,10 +1,7 @@
 package org.wcci.apimastery.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import org.wcci.apimastery.entities.Album;
-import org.wcci.apimastery.entities.Artist;
-import org.wcci.apimastery.entities.Comment;
-import org.wcci.apimastery.entities.Song;
+import org.wcci.apimastery.entities.*;
 import org.wcci.apimastery.repositories.SongRepository;
 import org.wcci.apimastery.storage.CommentStorage;
 import org.wcci.apimastery.storage.SongStorage;
@@ -32,30 +29,23 @@ public class SongController {
     }
 
     @PostMapping("/api/songs/add/")
-    public Song addSong(@RequestBody Song song){
+    public Song addSong(@RequestBody Song song) {
         return songStorage.save(song);
     }
 
-    @DeleteMapping("/api/songs/delete/")
+    @DeleteMapping("/api/songs/delete/{id}")
     public Collection<Song> deleteSong(@PathVariable long id) {
         songStorage.deleteSongById(id);
         return songStorage.retrieveAllSongs();
     }
 
-    @PostMapping("/api/comments/add/")
-    public Comment addComment(@RequestBody long songId,String authorName, String commentText){
+    @PatchMapping("/api/songs/{songId}/addComment/")
+    public Song addCommentToSong(@PathVariable long songId, @RequestBody SongComment comment) {
         Song song = songStorage.retrieveSongById(songId);
-        Comment commentToAdd = new Comment(authorName, commentText, song);
+        SongComment commentToAdd = new SongComment(comment.getText(), comment.getAuthorName(), song);
         commentStorage.addComment(commentToAdd);
-        return commentStorage.addComment();
+        return commentToAdd.getSong();
     }
 
-//    @PostMapping("/bens/comments/add")
-//    public String addComment(long songId, String authorName, String commentText) {
-//        Song song = songStorage.retrieveSongById(songId);
-//        Comment commentToAdd = new Comment( long id, song, String authorName   );
-//        commentStorage.addComment(commentToAdd);
-//        return "redirect:/bens/" + ben.getName();
-//    }
 
 }

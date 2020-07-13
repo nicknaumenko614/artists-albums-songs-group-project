@@ -2,10 +2,8 @@ package org.wcci.apimastery.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -17,15 +15,16 @@ public class Song {
     private String duration;
     private String imageUrl;
     @JsonIgnore
-
     @ManyToOne
     private Album album;
+    @OneToMany(mappedBy = "song")
+    private Collection<SongComment> comments;
 
     public Song(String songName, String duration, Album album, String imageUrl) {
         this.songName = songName;
         this.duration = duration;
         this.album = album;
-        this.imageUrl=imageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public Long getId() {
@@ -48,7 +47,12 @@ public class Song {
         return imageUrl;
     }
 
-    public Song() {    }
+    public Collection<SongComment> getComments() {
+        return comments;
+    }
+
+    public Song() {
+    }
 
     @Override
     public boolean equals(Object o) {

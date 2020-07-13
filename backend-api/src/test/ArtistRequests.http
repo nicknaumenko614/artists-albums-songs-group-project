@@ -30,16 +30,6 @@ Content-Type: application/json
 
 ###
 
-
-
-PATCH http://localhost:8080/api/artists/1/addAlbum/
-Content-Type: application/json
-
-{
-  "name": "Test Album",
-  "price": 12.34
-}
-
 ###
 POST http://localhost:8080/api/albums/add/
 Content-Type: application/json

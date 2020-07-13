@@ -1,0 +1,29 @@
+GET http://localhost:8080/api/songs/
+
+###
+
+GET http://localhost:8080/api/songs/5/
+
+
+###
+POST http://localhost:8080/api/songs/add/
+Content-Type: application/json
+
+{
+  "songName": "arbitrary songName",
+  "duration": "arbitrary duration",
+  "imageUrl": "arbitrary imageUrl"
+}
+
+###
+
+PATCH http://localhost:8080/api/songs/7/addComment/
+Content-Type: application/json
+
+{
+  "text": "arbitrary text",
+  "authorName": "arbitrary authorName"
+}
+
+###
+DELETE http://localhost:8080/api/songs/delete/2/

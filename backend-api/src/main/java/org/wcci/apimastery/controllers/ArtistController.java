@@ -29,6 +29,7 @@ public class ArtistController {
     public Artist retrieveArtistById(@PathVariable long id) {
         return artistStorage.retrieveArtistById(id);
     }
+
     @PostMapping("/api/artists/add/")
     public Artist addArtist(@RequestBody Artist artist){
         return artistStorage.save(artist);

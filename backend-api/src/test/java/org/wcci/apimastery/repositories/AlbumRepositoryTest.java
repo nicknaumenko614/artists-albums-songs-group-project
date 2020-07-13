@@ -26,8 +26,8 @@ public class AlbumRepositoryTest {
     public void albumCanHaveManySongs() {
         Artist testArtist = new Artist("Test Artist", "www.testurl.com");
         Album testAlbum = new Album("Test Album", "Test Label", "www.testurl.com", testArtist);
-        Song testSong1 = new Song ("Test Song", "2:00", testAlbum);
-        Song testSong2 = new Song ("Another Test Song", "3:00", testAlbum);
+        Song testSong1 = new Song("Test Song", "2:00", testAlbum, "testURL");
+        Song testSong2 = new Song("Another Test Song", "3:00", testAlbum, "testURL");
         artistRepo.save(testArtist);
         albumRepo.save(testAlbum);
         songRepo.save(testSong1);
