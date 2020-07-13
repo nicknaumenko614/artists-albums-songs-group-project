@@ -15,15 +15,17 @@ public class Song {
     private long id;
     private String songName;
     private String duration;
+    private String imageUrl;
     @JsonIgnore
 
     @ManyToOne
     private Album album;
 
-    public Song(String songName, String duration, Album album) {
+    public Song(String songName, String duration, Album album, String imageUrl) {
         this.songName = songName;
         this.duration = duration;
         this.album = album;
+        this.imageUrl=imageUrl;
     }
 
     public Long getId() {
@@ -42,9 +44,11 @@ public class Song {
         return album;
     }
 
-    public Song() {
-
+    public String getImageUrl() {
+        return imageUrl;
     }
+
+    public Song() {    }
 
     @Override
     public boolean equals(Object o) {

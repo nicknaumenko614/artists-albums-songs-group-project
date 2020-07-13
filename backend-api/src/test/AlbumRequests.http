@@ -1,0 +1,31 @@
+GET http://localhost:8080/api/albums/
+
+###
+GET http://localhost:8080/api/albums/7/
+
+###
+POST http://localhost:8080/api/albums/add/
+Content-Type: application/json
+
+{
+  "albumName": "arbitrary name",
+  "imageUrl": "arbitrary url",
+  "recordLabel": "arbitrary recordLabel"
+}
+
+
+
+
+###
+PATCH http://localhost:8080/api/albums/7/addSong/
+Content-Type: application/json
+
+{
+  "songName": "Added SOng 1",
+  "duration": "2:22",
+  "album": "Added Album ",
+  "imageUrl" : "addedURL.com"
+}
+
+###
+DELETE http://localhost:8080/api

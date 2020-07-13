@@ -30,8 +30,8 @@ public class Populator implements CommandLineRunner {
         Album album2 = new Album("Francis", "Columbia", "www.album2.com", artist2);
         albumRepo.save(album1);
         albumRepo.save(album2);
-        Song song1 = new Song("Stonemilker", "4:20", album1);
-        Song song2 = new Song("Cygnus", "3:79", album2);
+        Song song1 = new Song("Stonemilker", "4:20", album1, "stonemilker.com");
+        Song song2 = new Song("Cygnus", "3:79", album2, "Cygnus.com");
         songRepo.save(song1);
         songRepo.save(song2);
     }
