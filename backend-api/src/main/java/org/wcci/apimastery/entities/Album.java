@@ -18,8 +18,10 @@ public class Album {
     @JsonIgnore
     @ManyToOne
     private Artist artist;
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "album", orphanRemoval = true)
     private Collection<Song> songs;
+    @OneToMany(mappedBy = "album", orphanRemoval = true)
+    private Collection<AlbumComment> comments;
 
     public Album() {
     }
@@ -54,6 +56,9 @@ public class Album {
 
     public Collection<Song> getSongs() {
         return songs;
+    }
+    public Collection<AlbumComment> getComments() {
+        return comments;
     }
 
     @Override

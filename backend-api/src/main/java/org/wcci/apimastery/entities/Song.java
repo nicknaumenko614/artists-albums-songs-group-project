@@ -17,7 +17,7 @@ public class Song {
     @JsonIgnore
     @ManyToOne
     private Album album;
-    @OneToMany(mappedBy = "song")
+    @OneToMany(mappedBy = "song", orphanRemoval = true)
     private Collection<SongComment> comments;
 
     public Song(String songName, String duration, Album album, String imageUrl) {
@@ -51,8 +51,7 @@ public class Song {
         return comments;
     }
 
-    public Song() {
-    }
+    public Song() {}
 
     @Override
     public boolean equals(Object o) {

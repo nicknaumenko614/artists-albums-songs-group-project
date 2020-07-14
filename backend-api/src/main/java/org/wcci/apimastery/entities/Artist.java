@@ -14,8 +14,10 @@ public class Artist {
     private long id;
     private String artistName;
     private String imageUrl;
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", orphanRemoval = true)
     private Collection<Album> albums;
+    @OneToMany(mappedBy = "artist", orphanRemoval = true)
+    private Collection<ArtistComment> comments;
 
 
     public Artist() {
@@ -44,9 +46,14 @@ public class Artist {
         return imageUrl;
     }
 
+    public Collection<ArtistComment> getComments() {
+        return comments;
+    }
+
     public void setArtistName(String artistName) {
         this.artistName = artistName;
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -1,57 +1,33 @@
 GET http://localhost:8080/api/artists/
 
-###
-
-GET http://localhost:8080/api/albums/
 
 ###
 GET http://localhost:8080/api/artists/1/
 
-###
-
-GET http://localhost:8080/api/artists/2/
-
-###
-GET http://localhost:8080/api/artists/101/
-
-###
-
-
 
 
 ###
+
 POST http://localhost:8080/api/artists/add/
 Content-Type: application/json
 
 {
-  "artistName": "New Test Artist",
-  "imageUrl": "www.testurl1.com"
+  "artistName": "Another New Test Artist",
+  "imageUrl": "www.testUrl2.com"
 }
 
-###
 
 ###
-POST http://localhost:8080/api/albums/add/
+
+PATCH http://localhost:8080/api/artists/1/addAlbum/
 Content-Type: application/json
 
 {
-"albumName": "New Test Artist Album",
-"recordLabel": "Sony",
-"imageUrl": "www.testurlnta.com",
-"artist": "New Test Artist"
-}
-
-###
-
-PATCH http://localhost:8080/api/artists/7/addAlbum/
-Content-Type: application/json
-
-{
-  "albumName": "Artist 7 Album",
+  "albumName": "First Test Album",
   "recordLabel": "Sony",
-  "imageUrl": "bjork.com"
+  "imageUrl": "Albmum Image.com"
 }
 
 
 ###
-DELETE http://localhost:8080/api/artists/2/
+DELETE http://localhost:8080/api/artists/delete/1/

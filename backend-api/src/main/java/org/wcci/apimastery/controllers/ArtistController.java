@@ -1,11 +1,11 @@
 package org.wcci.apimastery.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import org.wcci.apimastery.entities.Album;
-import org.wcci.apimastery.entities.Artist;
+import org.wcci.apimastery.entities.*;
 import org.wcci.apimastery.repositories.ArtistRepository;
 import org.wcci.apimastery.storage.AlbumStorage;
 import org.wcci.apimastery.storage.ArtistStorage;
+import org.wcci.apimastery.storage.CommentStorage;
 
 import java.util.Collection;
 
@@ -13,10 +13,12 @@ import java.util.Collection;
 public class ArtistController {
     ArtistStorage artistStorage;
     AlbumStorage albumStorage;
+    CommentStorage commentStorage;
 
-    public ArtistController(ArtistStorage artistStorage, AlbumStorage albumStorage) {
+    public ArtistController(ArtistStorage artistStorage, AlbumStorage albumStorage, CommentStorage commentStorage) {
         this.artistStorage = artistStorage;
         this.albumStorage = albumStorage;
+        this.commentStorage = commentStorage;
     }
 
     @GetMapping("/api/artists/")
@@ -44,7 +46,15 @@ public class ArtistController {
         return albumToAdd.getArtist();
     }
 
-    @DeleteMapping("/api/artists/delete/")
+    @PatchMapping("/api/artists/{id}/addComment/")
+    public Artist addCommentToArtist(@PathVariable long id, @RequestBody ArtistComment comment) {
+        Artist artist = artistStorage.retrieveArtistById(id);
+        ArtistComment commentToAdd = new ArtistComment(comment.getText(), comment.getAuthorName(), artist);
+        commentStorage.addComment(commentToAdd);
+        return commentToAdd.getArtist();
+    }
+
+    @DeleteMapping("/api/artists/delete/{id}")
     public Collection<Artist> deleteArtist(@PathVariable long id) {
         artistStorage.deleteArtistById(id);
         return artistStorage.retrieveAllArtists();
