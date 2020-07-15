@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Library</title>
-    <link rel="stylesheet" href="/frontend-spa/src/css/style.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:ital@1&display=swap" rel="stylesheet">
+    <link
+            rel="stylesheet"
+            href="/frontend-spa/src/css/style.css"
+            type="text/css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:ital@1&display=swap"
+            rel="stylesheet"
+    />
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Music Library</h1>
-    </header>
-    <main>
-        <h2>Please click an artist below to see their music repertoire</h2>
-        <ul>
-            <li><a href="/frontend-spa/src/static/artist.html">Bjork</a></li>
-        </ul>
-    
-        <h3>Add a new artist below</h3>
-        <input type="text" >
-        <button>Submit</button>
-    </main>
-    <footer>
-        The Achievers Copyright 2020.
-    </footer>    
+<header>
+    <h1>Welcome to Our Music Library</h1>
+</header>
+<main>
+    <h2>Please click an artist below to see their music repertoire</h2>
+    <ul>
+        <li><a href="/frontend-spa/src/static/artist.html">Bjork</a></li>
+    </ul>
+    <h3>Add a new artist below</h3>
+    <form action="">
+        <div class="input-align">
+            <label for="artist__name">Artist Name: </label>
+            <input type="text" />
+            <br>
+            <label for="artist__image">Artist Picture URL: </label>
+            <input type="text" />
+            <br>
+            <button>Submit</button>
+        </div>
+    </form>
+</main>
+<footer>
+    The Achievers Copyright 2020.
+</footer>
 </body>
 </html>

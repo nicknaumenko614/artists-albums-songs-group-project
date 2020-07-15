@@ -1,17 +1,14 @@
-
-
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Ubuntu', sans-serif; */
 body{
     background-image: url(/frontend-spa/src/images/headphones.jpeg) ;
     background-size: 100% ;
-    float: left;
+    /* float: left; */
     color: white;
-    
 }
-
 a{
     color:white;
 }
-
 h1{
     font-family: 'Ubuntu', sans-serif;
     font-style: italic;
@@ -19,11 +16,47 @@ h1{
 ul{
     font-family: 'Roboto', sans-serif;
 }
-
 ol{
     font-family: 'Roboto', sans-serif;
 }
-
 h2{
-    font-family: 'Roboto' , sans-serif; 
+    font-family: 'Roboto' , sans-serif;
 }
+footer{
+    text-align: center;
+    margin-top: 500px;
+}
+input {
+    border-radius: 7px;
+    font-family: 'Montserrat', sans-serif;
+}
+.input-align input{
+    margin-left: 10em;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+.input-align label {
+    position: absolute;
+}
+.input-aligh {
+    display: block;
+    vertical-align: auto;
+    margin-bottom: 10em;
+}
+label {
+    margin-bottom: 1em;
+}
+input{
+    margin-bottom: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
