@@ -3,6 +3,6 @@ export {
 }
 
 const fetchPage = async () => {
-    return fetch('http://taco-randomizer.herokuapp.com/random/')
+    return fetch('http://localhost:8080/api/artists/')
         .then(response => response.json())
 }
