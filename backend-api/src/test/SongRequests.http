@@ -11,8 +11,8 @@ PATCH http://localhost:8080/api/songs/8/addComment/
 Content-Type: application/json
 
 {
-  "authorName": "Nick",
-  "text": "Nick added one more comment "
+  "authorName": "Musa",
+  "text": "Musa added one more comment "
 }
 
 ###
