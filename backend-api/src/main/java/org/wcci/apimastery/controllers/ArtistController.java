@@ -32,12 +32,12 @@ public class ArtistController {
         return artistStorage.retrieveArtistById(id);
     }
 
-    @PostMapping("/api/artists/add/")
+    @PostMapping("/api/artists/")
     public Artist addArtist(@RequestBody Artist artist){
         return artistStorage.save(artist);
     }
 
-    @PatchMapping("/api/artists/{id}/addAlbum/")
+    @PatchMapping("/api/artists/{id}/Album/")
     public Artist addAlbumToArtist(@PathVariable long id, @RequestBody Album album){
         Artist artist = artistStorage.retrieveArtistById(id);
         Album albumToAdd = new Album(album.getAlbumName(), album.getRecordLabel(), album.getImageUrl(), artist);
@@ -46,7 +46,7 @@ public class ArtistController {
         return albumToAdd.getArtist();
     }
 
-    @PatchMapping("/api/artists/{id}/addComment/")
+    @PatchMapping("/api/artists/{id}/Comment/")
     public Artist addCommentToArtist(@PathVariable long id, @RequestBody ArtistComment comment) {
         Artist artist = artistStorage.retrieveArtistById(id);
         ArtistComment commentToAdd = new ArtistComment(comment.getText(), comment.getAuthorName(), artist);

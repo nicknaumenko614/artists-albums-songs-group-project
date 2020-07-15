@@ -36,7 +36,7 @@ public class AlbumController {
 //        return albumStorage.save(album);
 //    }
 
-       @PatchMapping("/api/albums/{id}/addSong/")
+       @PatchMapping("/api/albums/{id}/Song/")
     public Album addSongToAlbum(@PathVariable long id, @RequestBody Song song){
         Album album = albumStorage.retrieveAlbumById(id);
         Song songToAdd = new Song(song.getSongName(), song.getDuration(), album, song.getImageUrl());
@@ -45,7 +45,7 @@ public class AlbumController {
         return songToAdd.getAlbum();
     }
 
-    @PatchMapping("/api/albums/{id}/addComment/")
+    @PatchMapping("/api/albums/{id}/Comment/")
     public Album addCommentToAlbum(@PathVariable long id, @RequestBody AlbumComment comment) {
         Album album = albumStorage.retrieveAlbumById(id);
         AlbumComment commentToAdd = new AlbumComment(comment.getText(), comment.getAuthorName(), album);

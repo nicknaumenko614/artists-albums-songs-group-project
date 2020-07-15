@@ -39,7 +39,7 @@ public class SongController {
         return songStorage.retrieveAllSongs();
     }
 
-    @PatchMapping("/api/songs/{id}/addComment/")
+    @PatchMapping("/api/songs/{id}/Comment/")
     public Song addCommentToSong(@PathVariable long id, @RequestBody SongComment comment) {
         Song song = songStorage.retrieveSongById(id);
         SongComment commentToAdd = new SongComment(comment.getText(), comment.getAuthorName(), song);

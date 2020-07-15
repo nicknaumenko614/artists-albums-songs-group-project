@@ -2,12 +2,12 @@ GET http://localhost:8080/api/songs/
 
 ###
 
-GET http://localhost:8080/api/songs/4/
+GET http://localhost:8080/api/songs/5/
 
 
 ###
 
-PATCH http://localhost:8080/api/songs/8/addComment/
+PATCH http://localhost:8080/api/songs/5/Comment/
 Content-Type: application/json
 
 {
@@ -16,4 +16,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8080/api/songs/delete/6/
+DELETE http://localhost:8080/api/songs/delete/5/

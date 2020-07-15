@@ -2,13 +2,13 @@ GET http://localhost:8080/api/artists/
 
 
 ###
-GET http://localhost:8080/api/artists/1/
+GET http://localhost:8080/api/artists/7/
 
 
 
 ###
 
-POST http://localhost:8080/api/artists/add/
+POST http://localhost:8080/api/artists/
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:8080/api/artists/1/addAlbum/
+PATCH http://localhost:8080/api/artists/7/Album/
 Content-Type: application/json
 
 {
@@ -30,4 +30,4 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:8080/api/artists/delete/1/
+DELETE http://localhost:8080/api/artists/delete/7/
