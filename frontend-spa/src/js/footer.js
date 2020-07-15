@@ -1,0 +1,5 @@
+export {
+    createFooter
+}
+
+const createFooter = 

@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Artist</title>
-    <link rel="stylesheet" type="text/css" href="/frontend-spa/src/css/style.css">
-</head>
-<body>
-<h1>Bjork</h1>
-<img src="/frontend-spa/src/images/bjork.jpg" alt="Bjork">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/frontend-spa/src/css/style.css"
+    />
+  </head>
+  <body>
+    <h1>Bjork</h1>
+    <img src="/frontend-spa/src/images/bjork.jpg" alt="Bjork" />
 
-
-
-<h2>Below is a list of the artist's album collection:</h2>
-<ul>
-    <li><a href="/frontend-spa/src/static/album.html">Björk – Homogenic</a>   </li>
-    <li>Album2</li>
-</ul>
-<h3>Add a new album below</h3>
-    <input type="text" >
-    <button>Submit</button>
-
-</body>
+    <h2>Below is a list of the artist's album collection:</h2>
+    <ul>
+      <li>
+        <a href="/frontend-spa/src/static/album.html">Björk – Homogenic</a>
+      </li>
+      <li>Album2</li>
+    </ul>
+    <h3>Add a new album below</h3>
+    <div class="input-align">
+      <label for="album__name">Album Name: </label>
+      <input type="text" />
+      <br />
+      <label for="record__label">Record Label: </label>
+      <input type="text" />
+      <br />
+      <label for="Album__clipartURL">Album Clipart URL: </label>
+      <input type="text" />
+      <br />
+      <label for="artist">Artist: </label>
+      <input type="text" />
+      <br />
+      <button>Submit</button>
+    </div>
+  </body>
 </html>
