@@ -8,6 +8,7 @@ import org.wcci.apimastery.storage.SongStorage;
 
 import java.util.Collection;
 
+@CrossOrigin
 @RestController
 public class SongController {
     SongStorage songStorage;

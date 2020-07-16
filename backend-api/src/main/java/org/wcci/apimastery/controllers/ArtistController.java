@@ -9,6 +9,7 @@ import org.wcci.apimastery.storage.CommentStorage;
 
 import java.util.Collection;
 
+@CrossOrigin
 @RestController
 public class ArtistController {
     ArtistStorage artistStorage;
