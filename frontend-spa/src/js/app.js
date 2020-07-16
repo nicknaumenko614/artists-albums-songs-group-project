@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const renderAllArtists = (element, artists) => {
   clearElementChildren(element);
 
@@ -76,32 +75,13 @@ const clearElementChildren = element => {
 }
 
 
-const catalog = document.querySelector(".catalog")
+const library = document.querySelector(".library")
 fetchArtists()
   .then(artists => {
     console.log(artists);
-    renderAllArtists(catalog, artists)
+    renderAllArtists(library, artists)
   })
-=======
-import {
-    fetchPage
-} from "./pageFetcher";
-
-
-const renderAllArtists = (element, artists) => {
-    clearElementChildren(element);
-
-    for (let i = 0; i < artists.length; i++) {
-        const article = document.createElement('article');
-        article.classList.add('artist');
-        article.innerHTML = `
-            <h2 class="vendor__title">${vendors[i].name}</h2>
-            <h4 class="vendor__phone-number">${vendors[i].phoneNumber}</h4>            
-        `;
-
-        article.addEventListener('click', () => {
-            renderVendor(element, vendors[i]);
-        });
-        element.append(article);
-    };
->>>>>>> de385d5a92d4dd08029ff24ae3ecf2bebb536cd2
+  const renderArtist = async () => {
+    return fetch('http://localhost:8080/api/artists/')
+        .then(response => response.json())
+}
