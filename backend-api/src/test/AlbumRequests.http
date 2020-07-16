@@ -1,12 +1,12 @@
 GET http://localhost:8080/api/albums/
 
 ###
-GET http://localhost:8080/api/albums/7/
+GET http://localhost:8080/api/albums/4/
 
 
 
 ###
-PATCH http://localhost:8080/api/albums/7/addSong/
+PATCH http://localhost:8080/api/albums/4/Song/
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:8080/api/albums/7/addComment/
+PATCH http://localhost:8080/api/albums/4/Comment/
 Content-Type: application/json
 
 {
@@ -29,4 +29,4 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:8080/api/albums/delete/7
+DELETE http://localhost:8080/api/albums/delete/4
