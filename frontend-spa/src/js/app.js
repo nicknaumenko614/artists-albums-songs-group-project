@@ -4,6 +4,8 @@ const fetchArtists = async () => {
     );
 };
 
+//ALL ARTISTS
+
 const renderAllArtists = (element, artists) => {
     clearElementChildren(element);
 
@@ -24,17 +26,8 @@ const renderAllArtists = (element, artists) => {
       }
       ;
     }
-    
-    // const renderSong = (element, song) => {
-    //     clearElementChildren(element);
-    //     element.innerHTML = `
-    //   <section class="song">
-    //     <h2 class="song__name">${song.songName}</h2>
-    //     <h2 class="song__duration">${song.duration}</h2>
-    //     <h2 class="song__image">${song.imageUrl}</h2>         
-    //   </section>
-    //   `
-
+   
+// ONE ARTIST
 const renderArtist = (element, artist) => {
     clearElementChildren(element);
     element.innerHTML = `
@@ -52,8 +45,8 @@ const renderArtist = (element, artist) => {
        
         albums.append(li);
         li.addEventListener('click', ()=>{
-          alert(album.albumName);
-          // renderAlbum();
+          // alert(album.albumName);
+          renderAllAlbums(element, albums);
         })
     })
     const backHomeLink = document.createElement('a');
@@ -68,7 +61,35 @@ const renderArtist = (element, artist) => {
     element.append(backHomeLink);
 }
 
+// ALL ALBUMS
 
+const renderAllAlbums = (element, albums) => {
+  clearElementChildren(element);
+
+  element.innerHTML = `
+         <h2>Please select from Albums below:</h2>
+      `;
+  for (let i = 0; i <albums.length; i++) {
+      const section = document.createElement('section');
+      section.classList.add('album');
+      section.innerHTML = `
+          <h4 class="album__name">${albums[i].albumName}</h4> 
+          <<h4 class="album__imageurl">${albums[i].imageUrl}</h4>  
+          <h4 class="album__record-label">${albums[i].recordLabel}</h4>         
+      `;
+      console.log(albums)
+
+      section.addEventListener('click', () => {
+          renderAlbum(element, albums[i]);
+      });
+      element.append(section);
+      
+    }
+    ;
+  }
+
+
+// ONE ALBUM
 const renderAlbum = (element, album) => {
   clearElementChildren(element);
   element.innerHTML = `
@@ -102,7 +123,7 @@ const songs = document.createElement('ul');
   element.append(backHomeLink);
 }
 
-
+// UTILS
 const clearElementChildren = element => {
     while (element.firstChild) {
         element.firstChild.remove();
@@ -114,3 +135,14 @@ fetchArtists()
     .then(artists => {
         renderAllArtists(library, artists)
     })
+
+     
+    // const renderSong = (element, song) => {
+    //     clearElementChildren(element);
+    //     element.innerHTML = `
+    //   <section class="song">
+    //     <h2 class="song__name">${song.songName}</h2>
+    //     <h2 class="song__duration">${song.duration}</h2>
+    //     <h2 class="song__image">${song.imageUrl}</h2>         
+    //   </section>
+    //   `
