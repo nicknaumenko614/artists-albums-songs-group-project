@@ -31,9 +31,14 @@ const renderAllArtists = (element, artists) => {
 const renderArtist = (element, artist) => {
     clearElementChildren(element);
     element.innerHTML = `
+    
+           
+        
       <section class="artist">
         <h2 class="artist__name">${artist.artistName}</h2>
         <h4 class="artist__imageurl">${artist.imageUrl}</h4>  
+        <h2>Please select from Albums below:</h2>
+        
                   
       </section>
   `
@@ -45,8 +50,8 @@ const renderArtist = (element, artist) => {
        
         albums.append(li);
         li.addEventListener('click', ()=>{
-          // alert(album.albumName);
-          renderAllAlbums(element, albums);
+        //   alert(album.albumName);
+          renderAlbum(element, album);
         })
     })
     const backHomeLink = document.createElement('a');
