@@ -68,46 +68,48 @@ const renderArtist = (element, artist) => {
 
 // ALL ALBUMS
 
-const renderAllAlbums = (element, albums) => {
-  clearElementChildren(element);
+// const renderAllAlbums = (element, albums) => {
+//   clearElementChildren(element);
 
-  element.innerHTML = `
-         <h2>Please select from Albums below:</h2>
-      `;
-  for (let i = 0; i <albums.length; i++) {
-      const section = document.createElement('section');
-      section.classList.add('album');
-      section.innerHTML = `
-          <h4 class="album__name">${albums[i].albumName}</h4> 
-          <<h4 class="album__imageurl">${albums[i].imageUrl}</h4>  
-          <h4 class="album__record-label">${albums[i].recordLabel}</h4>         
-      `;
-      console.log(albums)
+//   element.innerHTML = `
+//          <h2>Please select from Albums below:</h2>
+//       `;
+//   for (let i = 0; i <albums.length; i++) {
+//       const section = document.createElement('section');
+//       section.classList.add('album');
+//       section.innerHTML = `
+//           <h4 class="album__name">${albums[i].albumName}</h4> 
+//           <<h4 class="album__imageurl">${albums[i].imageUrl}</h4>  
+//           <h4 class="album__record-label">${albums[i].recordLabel}</h4>         
+//       `;
+//       console.log(albums)
 
-      section.addEventListener('click', () => {
-          renderAlbum(element, albums[i]);
-      });
-      element.append(section);
+//       section.addEventListener('click', () => {
+//           renderAlbum(element, albums[i]);
+//       });
+//       element.append(section);
       
-    }
-    ;
-  }
+//     }
+//     ;
+//   }
 
 
 // ONE ALBUM
 const renderAlbum = (element, album) => {
   clearElementChildren(element);
   element.innerHTML = `
+  
     <section class="album">
       <h2 class="album__name">${album.albumName}</h2>
       <h4 class="album__imageurl">${album.imageUrl}</h4>  
       <h4 class="album__record-label">${album.recordLabel}</h4> 
+      Please pick a song from below
                 
     </section>
 `
 const songs = document.createElement('ul');
 
-  albums.songs.forEach((song) => {
+  album.songs.forEach((song) => {
       const li = document.createElement('li');
       li.innerHTML = `<a class = "song__name">${song.songName}</a>`
      
@@ -117,14 +119,14 @@ const songs = document.createElement('ul');
       })
   })
   const backHomeLink = document.createElement('a');
-  backHomeLink.innerText = "Back To All Albums"
+  backHomeLink.innerText = "Back To All Artists"
   backHomeLink.addEventListener('click', () => {
       fetchArtists()
           .then(artists => {
               renderAllArtists(library, artists)
           });
   })
-  element.append(albums);
+  element.append(album);
   element.append(backHomeLink);
 }
 
@@ -142,12 +144,13 @@ fetchArtists()
     })
 
      
-    // const renderSong = (element, song) => {
-    //     clearElementChildren(element);
-    //     element.innerHTML = `
-    //   <section class="song">
-    //     <h2 class="song__name">${song.songName}</h2>
-    //     <h2 class="song__duration">${song.duration}</h2>
-    //     <h2 class="song__image">${song.imageUrl}</h2>         
-    //   </section>
-    //   `
+    const renderSong = (element, song) => {
+        clearElementChildren(element);
+        element.innerHTML = `
+      <section class="song">
+        <h2 class="song__name">${song.songName}</h2>
+        <h2 class="song__duration">${song.duration}</h2>
+        <h2 class="song__image">${song.imageUrl}</h2>         
+      </section>
+      `
+    }
