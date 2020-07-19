@@ -10,10 +10,9 @@ const renderArtist = (element, artist) => {
 
       <section class="artist">
         <h2 class="artist__name">${artist.artistName}</h2>
-        <img src="${artist.imageUrl}" alt="Artist Image" width="500"</h4>  
+        <img src="${artist.imageUrl}" alt="Artist Image" width="300">  
         <br>
-        <h2>Please select from Albums below:</h2>
-        <br>
+        <h2>Please select from ${artist.artistName}'s Albums below:</h2>
                   
       </section>
   `
@@ -25,7 +24,6 @@ const renderArtist = (element, artist) => {
 
         albums.append(li);
         li.addEventListener('click', () => {
-            //   alert(album.albumName);
             renderAlbum(element, album);
         })
     })

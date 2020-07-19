@@ -10,7 +10,7 @@ const renderSong = (element, song) => {
       <section class="song">
         <br>
         <h2 class="song__name">${song.songName}</h2>
-        <h4 class="song__imageurl">${song.imageUrl}</h4>  
+        <iframe width="560" height="315" src="${song.imageUrl}"?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h4 class="song__duration">${song.duration}</h4>    
         <br>      
       </section>

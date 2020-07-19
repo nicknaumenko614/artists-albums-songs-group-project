@@ -11,9 +11,9 @@ const renderAllAlbums = (element, albums) => {
         const section = document.createElement('section');
         section.classList.add('album');
         section.innerHTML = `
-          <h4 class="album__name">${albums[i].albumName}</h4> 
-          <h4 class="album__imageurl">${albums[i].imageUrl}</h4>  
-          <h4 class="album__record-label">${albums[i].recordLabel}</h4>    
+          <img src="${albums[i].imageUrl}" alt="Album Image" width="80"> 
+          <h4 class="album__name">Album Name: ${albums[i].albumName}</h4> 
+          <h4 class="album__record-label">Record Label: ${albums[i].recordLabel}</h4>  
           <br>     
       `;
         console.log(albums)
