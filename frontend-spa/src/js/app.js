@@ -4,8 +4,19 @@ const fetchArtists = async () => {
     );
 };
 
-//ALL ARTISTS
+const fetchAlbums = async () => {
+    return fetch("http://localhost:8080/api/albums/").then((response) =>
+        response.json()
+    );
+};
 
+const fetchSongs = async () => {
+    return fetch("http://localhost:8080/api/songs/").then((response) =>
+        response.json()
+    );
+};
+
+//ALL ARTISTS
 const renderAllArtists = (element, artists) => {
     clearElementChildren(element);
 
@@ -53,7 +64,7 @@ const renderArtist = (element, artist) => {
         })
     })
     const backHomeLink = document.createElement('a');
-    backHomeLink.innerText = "Back To All Artists"
+    backHomeLink.innerText = "View All Artists in Playlist"
     backHomeLink.addEventListener('click', () => {
         fetchArtists()
             .then(artists => {
@@ -65,7 +76,6 @@ const renderArtist = (element, artist) => {
 }
 
 // ALL ALBUMS
-
 const renderAllAlbums = (element, albums) => {
     clearElementChildren(element);
 
@@ -77,8 +87,9 @@ const renderAllAlbums = (element, albums) => {
         section.classList.add('album');
         section.innerHTML = `
           <h4 class="album__name">${albums[i].albumName}</h4> 
-          <<h4 class="album__imageurl">${albums[i].imageUrl}</h4>  
-          <h4 class="album__record-label">${albums[i].recordLabel}</h4>         
+          <h4 class="album__imageurl">${albums[i].imageUrl}</h4>  
+          <h4 class="album__record-label">${albums[i].recordLabel}</h4>    
+          <br>     
       `;
         console.log(albums)
 
@@ -111,18 +122,72 @@ const renderAlbum = (element, album) => {
 
         songs.append(li);
         li.addEventListener('click', () => {
-            alert(song.songName)
+            renderSong(element, song)
         })
     })
     const backHomeLink = document.createElement('a');
-    backHomeLink.innerText = "Back To All Albums"
+    backHomeLink.innerText = "View All Albums in Playlist"
     backHomeLink.addEventListener('click', () => {
-        fetchArtists()
-            .then(artists => {
-                renderAllArtists(library, artists)
+        fetchAlbums()
+            .then(albums => {
+                renderAllAlbums(library, albums)
             });
     })
     element.append(songs);
+    element.append(backHomeLink);
+}
+
+
+//ALL SONGS
+const renderAllSongs = (element, songs) => {
+    clearElementChildren(element);
+
+
+    element.innerHTML = `
+         <h2>Please select from Albums below:</h2>
+      `;
+    for (let i = 0; i < songs.length; i++) {
+        const section = document.createElement('section');
+        section.classList.add('song');
+        section.innerHTML = `
+          <br>
+          <h4 class="song__name">${songs[i].songName}</h4> 
+          <h4 class="song__imageurl">${songs[i].imageUrl}</h4>  
+          <h4 class="song__duration">${songs[i].duration}</h4>    
+          <br>     
+      `;
+
+        section.addEventListener('click', () => {
+            renderSong(element, songs[i]);
+        });
+        element.append(section);
+
+    }
+    ;
+}
+
+// ONE SONG
+const renderSong = (element, song) => {
+    clearElementChildren(element);
+    element.innerHTML = `
+        
+      <section class="song">
+        <br>
+        <h2 class="song__name">${song.songName}</h2>
+        <h4 class="song__imageurl">${song.imageUrl}</h4>  
+        <h4 class="song__duration">${song.duration}</h4>    
+        <br>      
+      </section>
+  `
+    const backHomeLink = document.createElement('a');
+    backHomeLink.innerText = "View All Songs in playlist"
+    backHomeLink.addEventListener('click', () => {
+        fetchSongs()
+            .then(songs => {
+                renderAllSongs(library, songs)
+            });
+    })
+
     element.append(backHomeLink);
 }
 
@@ -139,13 +204,3 @@ fetchArtists()
         renderAllArtists(library, artists)
     })
 
-
-// const renderSong = (element, song) => {
-//     clearElementChildren(element);
-//     element.innerHTML = `
-//   <section class="song">
-//     <h2 class="song__name">${song.songName}</h2>
-//     <h2 class="song__duration">${song.duration}</h2>
-//     <h2 class="song__image">${song.imageUrl}</h2>
-//   </section>
-//   `
