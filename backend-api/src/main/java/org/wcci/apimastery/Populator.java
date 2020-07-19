@@ -24,7 +24,7 @@ public class Populator implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Artist artist1 = new Artist("Bjork", "www.artist1.com");
         Artist artist2 = new Artist("The Mars Volta", "www.artist2.com");
-        Artist artist3 = new Artist("Arbitrary Artist", "www.artist3.com");
+        Artist artist3 = new Artist("Arbitrary Artist", "https://www.bocadolobo.com/blog/wp-content/uploads/2018/06/Vincent-van-Gogh.jpg");
         artistRepo.save(artist1);
         artistRepo.save(artist2);
         artistRepo.save(artist3);

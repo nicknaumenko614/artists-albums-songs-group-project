@@ -16,18 +16,22 @@ const fetchSongs = async () => {
     );
 };
 
+
+
 //ALL ARTISTS
 const renderAllArtists = (element, artists) => {
     clearElementChildren(element);
 
     element.innerHTML = `
            <h2>Please select from Artists below:</h2>
+           <br>
         `;
     for (let i = 0; i < artists.length; i++) {
         const section = document.createElement('section');
         section.classList.add('artist');
         section.innerHTML = `
-            <h4 class="artist__name">${artists[i].artistName}</h4>          
+            <h4 class="artist__name">${artists[i].artistName}</h4>  
+                
         `;
 
         section.addEventListener('click', () => {
@@ -38,6 +42,8 @@ const renderAllArtists = (element, artists) => {
     ;
 }
 
+
+
 // ONE ARTIST
 const renderArtist = (element, artist) => {
     clearElementChildren(element);
@@ -45,9 +51,10 @@ const renderArtist = (element, artist) => {
 
       <section class="artist">
         <h2 class="artist__name">${artist.artistName}</h2>
-        <h4 class="artist__imageurl">${artist.imageUrl}</h4>  
+        <img src="${artist.imageUrl}" alt="Artist Image" width="500"</h4>  
+        <br>
         <h2>Please select from Albums below:</h2>
-        
+        <br>
                   
       </section>
   `
