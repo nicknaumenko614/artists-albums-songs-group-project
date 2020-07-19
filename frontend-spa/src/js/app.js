@@ -2,69 +2,14 @@ import {
     fetchAlbums, fetchSongs, fetchArtists
 } from "./apiHelper.js";
 
+import {
+    clearElementChildren
+} from "./utils.js";
 
-//ALL ARTISTS
-const renderAllArtists = (element, artists) => {
-    clearElementChildren(element);
+import {
+    renderAllArtists
+} from "./allArtistsView.js";
 
-    element.innerHTML = `
-           <h2>Please select from Artists below:</h2>
-           <br>
-        `;
-    for (let i = 0; i < artists.length; i++) {
-        const section = document.createElement('section');
-        section.classList.add('artist');
-        section.innerHTML = `
-            <h4 class="artist__name">${artists[i].artistName}</h4>  
-                
-        `;
-
-        section.addEventListener('click', () => {
-            renderArtist(element, artists[i]);
-        });
-        element.append(section);
-    }
-    ;
-}
-
-
-// ONE ARTIST
-const renderArtist = (element, artist) => {
-    clearElementChildren(element);
-    element.innerHTML = `
-
-      <section class="artist">
-        <h2 class="artist__name">${artist.artistName}</h2>
-        <img src="${artist.imageUrl}" alt="Artist Image" width="500"</h4>  
-        <br>
-        <h2>Please select from Albums below:</h2>
-        <br>
-                  
-      </section>
-  `
-    const albums = document.createElement('ul');
-
-    artist.albums.forEach((album) => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a class = "album__name">${album.albumName}</a>`
-
-        albums.append(li);
-        li.addEventListener('click', () => {
-            //   alert(album.albumName);
-            renderAlbum(element, album);
-        })
-    })
-    const backHomeLink = document.createElement('a');
-    backHomeLink.innerText = "View All Artists in Playlist"
-    backHomeLink.addEventListener('click', () => {
-        fetchArtists()
-            .then(artists => {
-                renderAllArtists(library, artists)
-            });
-    })
-    element.append(albums);
-    element.append(backHomeLink);
-}
 
 // ALL ALBUMS
 const renderAllAlbums = (element, albums) => {
@@ -182,12 +127,6 @@ const renderSong = (element, song) => {
     element.append(backHomeLink);
 }
 
-// UTILS
-const clearElementChildren = element => {
-    while (element.firstChild) {
-        element.firstChild.remove();
-    }
-}
 
 const library = document.querySelector(".library")
 fetchArtists()
@@ -195,3 +134,4 @@ fetchArtists()
         renderAllArtists(library, artists)
     })
 
+export {renderAlbum, library}
