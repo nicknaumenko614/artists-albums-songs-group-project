@@ -16,6 +16,16 @@ const fetchSongs = async () => {
     );
 };
 
+const postNewArtist = async (artist) => {
+    return fetch('http://localhost:8080/api/artist/', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(artist)
+    }).then(response => response.json())
+}
+
 export {
-    fetchArtists, fetchSongs, fetchAlbums
+    fetchArtists, fetchSongs, fetchAlbums, postNewArtist
 }
