@@ -18,15 +18,18 @@ const renderArtist = (element, artist) => {
   `
     const albums = document.createElement('ul');
 
-    artist.albums.forEach((album) => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a class = "album__name">${album.albumName}</a>`
+    if (artist.albums != null) {
+        artist.albums.forEach((album) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a class = "album__name">${album.albumName}</a>`
 
-        albums.append(li);
-        li.addEventListener('click', () => {
-            renderAlbum(element, album);
+            albums.append(li);
+            li.addEventListener('click', () => {
+                renderAlbum(element, album);
+            })
         })
-    })
+    }
+
     const backHomeLink = document.createElement('a');
     backHomeLink.innerText = "View All Artists in Playlist"
     backHomeLink.addEventListener('click', () => {
