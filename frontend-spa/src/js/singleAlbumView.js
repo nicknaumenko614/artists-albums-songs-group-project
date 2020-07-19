@@ -1,10 +1,8 @@
-
 import {clearElementChildren} from "./utils.js";
 import {fetchAlbums} from "./apiHelper.js";
 import {renderAllAlbums} from "./allAlbumsView.js";
-import {library, renderSong} from "./app.js";
-
-
+import {renderSong} from "./singleSongView.js";
+import {library} from "./app.js"
 
 const renderAlbum = (element, album) => {
     clearElementChildren(element);

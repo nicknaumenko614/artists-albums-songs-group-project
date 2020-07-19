@@ -1,4 +1,3 @@
-
 import {clearElementChildren} from "./utils.js";
 import {renderAlbum} from "./app.js";
 
