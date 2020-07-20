@@ -12,7 +12,7 @@ const renderArtist = (element, artist) => {
       <section class="artist">
         <h2 class="artist__name">${artist.artistName}</h2>
         <img src="${artist.imageUrl}" alt="Artist Image" width="300">  
-        displayAddAlbumToArtistForm(element, artist.id);
+       
         <br>
         <h2>Please select from ${artist.artistName}'s Albums below:</h2>
                   
