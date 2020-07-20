@@ -3,7 +3,7 @@ import {fetchAlbumById} from "./apiHelper.js";
 import {library} from "./app.js";
 import {renderAlbum} from "./app.js";
 
-const renderSong = (element, song, albumId) => {
+const renderSong = (element, song, albumId, artistId) => {
     clearElementChildren(element);
     element.innerHTML = `
         
@@ -20,7 +20,7 @@ const renderSong = (element, song, albumId) => {
     backHomeLink.addEventListener('click', () => {
         fetchAlbumById(albumId)
             .then(album => {
-                renderAlbum(library, album)
+                renderAlbum(library, album, artistId)
             });
     })
 

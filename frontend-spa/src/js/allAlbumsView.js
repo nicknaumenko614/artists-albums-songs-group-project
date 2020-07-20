@@ -1,7 +1,7 @@
 import {clearElementChildren} from "./utils.js";
 import {renderAlbum} from "./app.js";
 
-const renderAllAlbums = (element, albums) => {
+const renderAllAlbums = (element, albums, artistId) => {
     clearElementChildren(element);
 
     element.innerHTML = `
@@ -19,7 +19,7 @@ const renderAllAlbums = (element, albums) => {
         console.log(albums)
 
         section.addEventListener('click', () => {
-            renderAlbum(element, albums[i]);
+            renderAlbum(element, albums[i], artistId);
         });
         element.append(section);
 

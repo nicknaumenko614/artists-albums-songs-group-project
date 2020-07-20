@@ -1,11 +1,11 @@
 import {clearElementChildren} from "./utils.js";
-import {fetchAlbums} from "./apiHelper.js";
-import {renderAllAlbums} from "./allAlbumsView.js";
+import {fetchArtistById} from "./apiHelper.js";
 import {renderSong} from "./singleSongView.js";
 import {library} from "./app.js"
 import {patchNewSongToAlbum} from "./apiHelper.js";
+import {renderArtist} from "./singleArtistView.js";
 
-const renderAlbum = (element, album) => {
+const renderAlbum = (element, album, artistId) => {
     clearElementChildren(element);
     element.innerHTML = `
     <section class="album">
@@ -26,26 +26,36 @@ const renderAlbum = (element, album) => {
 
             songs.append(li);
             li.addEventListener('click', () => {
-                renderSong(element, song, album.id)
+                renderSong(element, song, album.id, artistId)
             })
         })
     }
 
-    displayAddSongToAlbumForm(element, album.id);
+    displayAddSongToAlbumForm(element, album.id, artistId);
 
     const backHomeLink = document.createElement('a');
-    backHomeLink.innerText = "View All Albums in Playlist"
+    backHomeLink.innerText = "Back to Artist"
     backHomeLink.addEventListener('click', () => {
-        fetchAlbums()
-            .then(albums => {
-                renderAllAlbums(library, albums)
+        fetchArtistById(artistId)
+            .then(artist => {
+                renderArtist(library, artist)
             });
     })
+
+    // const backHomeLink = document.createElement('a');
+    // backHomeLink.innerText = "View All Albums in Playlist"
+    // backHomeLink.addEventListener('click', () => {
+    //     fetchAlbums()
+    //         .then(albums => {
+    //             renderAllAlbums(library, albums)
+    //         });
+    // })
+
     element.append(songs);
     element.append(backHomeLink);
 }
 
-function displayAddSongToAlbumForm(element, albumId) {
+function displayAddSongToAlbumForm(element, albumId, artistId) {
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.placeholder = 'Enter new song name';
@@ -77,7 +87,7 @@ function displayAddSongToAlbumForm(element, albumId) {
         }
         patchNewSongToAlbum(newSong, albumId)
             .then(album => {
-                renderAlbum(element, album)
+                renderAlbum(element, album, artistId)
             })
     })
 }

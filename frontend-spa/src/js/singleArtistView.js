@@ -26,7 +26,7 @@ const renderArtist = (element, artist) => {
 
             albums.append(li);
             li.addEventListener('click', () => {
-                renderAlbum(element, album);
+                renderAlbum(element, album, artist.id);
             })
         })
     }

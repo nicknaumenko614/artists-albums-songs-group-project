@@ -52,6 +52,19 @@ const fetchAlbumById = async (albumId) => {
     );
 };
 
+const fetchArtistById = async (artistId) => {
+    return fetch("http://localhost:8080/api/artists/" + artistId).then((response) =>
+        response.json()
+    );
+};
+
 export {
-    fetchArtists, fetchSongs, fetchAlbums, postNewArtist, patchNewAlbumToArtist, patchNewSongToAlbum, fetchAlbumById
+    fetchArtists,
+    fetchSongs,
+    fetchAlbums,
+    postNewArtist,
+    patchNewAlbumToArtist,
+    patchNewSongToAlbum,
+    fetchAlbumById,
+    fetchArtistById
 }
