@@ -3,6 +3,7 @@ import {fetchAlbums} from "./apiHelper.js";
 import {renderAllAlbums} from "./allAlbumsView.js";
 import {renderSong} from "./singleSongView.js";
 import {library} from "./app.js"
+import {patchNewSongToAlbum} from "./apiHelper.js";
 
 const renderAlbum = (element, album) => {
     clearElementChildren(element);
@@ -30,6 +31,8 @@ const renderAlbum = (element, album) => {
         })
     }
 
+    displayAddSongToAlbumForm(element, album.id);
+
     const backHomeLink = document.createElement('a');
     backHomeLink.innerText = "View All Albums in Playlist"
     backHomeLink.addEventListener('click', () => {
@@ -40,6 +43,43 @@ const renderAlbum = (element, album) => {
     })
     element.append(songs);
     element.append(backHomeLink);
+}
+
+function displayAddSongToAlbumForm(element, albumId) {
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Enter new song name';
+    nameInput.classList.add('song__form-name');
+    element.append(nameInput);
+
+    const urlInput = document.createElement('input');
+    urlInput.type = 'text';
+    urlInput.placeholder = 'Enter song URL';
+    urlInput.classList.add('song__form-url');
+    element.append(urlInput);
+
+    const duration = document.createElement('input');
+    duration.type = 'text';
+    duration.placeholder = 'Enter song duration';
+    duration.classList.add('song__form-duration');
+    element.append(duration);
+
+    const submitButton = document.createElement('button');
+    submitButton.innerText = "Submit New Song";
+    submitButton.classList.add('song__form-submit');
+    element.append(submitButton);
+
+    submitButton.addEventListener('click', () => {
+        const newSong = {
+            "songName": nameInput.value,
+            "imageUrl": urlInput.value,
+            "duration": duration.value
+        }
+        patchNewSongToAlbum(newSong, albumId)
+            .then(album => {
+                renderAlbum(element, album)
+            })
+    })
 }
 
 export {renderAlbum}
