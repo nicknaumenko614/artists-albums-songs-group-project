@@ -26,6 +26,16 @@ const postNewArtist = async (artist) => {
     }).then(response => response.json())
 }
 
+const patchNewAlbumToArtist = async (album, artistId) => {
+    return fetch('http://localhost:8080/api/artists/' + artistId + '/Album/', {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(album)
+    }).then(response => response.json())
+}
+
 export {
-    fetchArtists, fetchSongs, fetchAlbums, postNewArtist
+    fetchArtists, fetchSongs, fetchAlbums, postNewArtist, patchNewAlbumToArtist
 }
