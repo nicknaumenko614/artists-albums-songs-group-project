@@ -6,21 +6,24 @@ const renderAllArtists = (element, artists) => {
     clearElementChildren(element);
 
     element.innerHTML = `
+         <section class = "artists">
            <h2>Please select from Artists below:</h2>
-           <br>
+           </section>   
         `;
-    for (let i = 0; i < artists.length; i++) {
-        const section = document.createElement('section');
-        section.classList.add('artist');
-        section.innerHTML = `
-            <h4 class="artist__name">${artists[i].artistName}</h4>  
-                
-        `;
+    const artistsList = document.createElement('ul')
 
-        section.addEventListener('click', () => {
+    for (let i = 0; i < artists.length; i++) {
+        const li = document.createElement('li');
+        li.classList.add('artist');
+        li.innerHTML = `
+            <a class="artist__name">${artists[i].artistName}</a>  
+             
+        `;
+        artistsList.append(li);
+        li.addEventListener('click', () => {
             renderArtist(element, artists[i]);
         });
-        element.append(section);
+        element.append(artistsList);
     }
     ;
 

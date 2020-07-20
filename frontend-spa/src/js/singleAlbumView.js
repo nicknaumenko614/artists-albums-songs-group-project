@@ -5,6 +5,7 @@ import {library} from "./app.js"
 import {patchNewSongToAlbum} from "./apiHelper.js";
 import {renderArtist} from "./singleArtistView.js";
 
+
 const renderAlbum = (element, album, artistId) => {
     clearElementChildren(element);
     element.innerHTML = `
@@ -33,14 +34,17 @@ const renderAlbum = (element, album, artistId) => {
 
     displayAddSongToAlbumForm(element, album.id, artistId);
 
-    const backHomeLink = document.createElement('a');
-    backHomeLink.innerText = "Back to Artist"
-    backHomeLink.addEventListener('click', () => {
+    const backToArtistButton = document.createElement('button');
+    backToArtistButton.innerText = "Back to Artist"
+    backToArtistButton.classList.add = "back__button"
+    backToArtistButton.addEventListener('click', () => {
         fetchArtistById(artistId)
             .then(artist => {
                 renderArtist(library, artist)
             });
     })
+
+
 
     // const backHomeLink = document.createElement('a');
     // backHomeLink.innerText = "View All Albums in Playlist"
@@ -52,7 +56,7 @@ const renderAlbum = (element, album, artistId) => {
     // })
 
     element.append(songs);
-    element.append(backHomeLink);
+    element.append(backToArtistButton)
 }
 
 function displayAddSongToAlbumForm(element, albumId, artistId) {

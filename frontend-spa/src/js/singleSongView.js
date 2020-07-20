@@ -15,14 +15,17 @@ const renderSong = (element, song, albumId, artistId) => {
         <br>      
       </section>
   `
-    const backHomeLink = document.createElement('a');
-    backHomeLink.innerText = "Back to Album"
-    backHomeLink.addEventListener('click', () => {
+    const backToAlbumButton = document.createElement('button');
+    backToAlbumButton.innerText = "Back to Album"
+    backToAlbumButton.classList.add = "back__button"
+    backToAlbumButton.addEventListener('click', () => {
         fetchAlbumById(albumId)
             .then(album => {
                 renderAlbum(library, album, artistId)
             });
     })
+
+
 
     // const backHomeLink = document.createElement('a');
     // backHomeLink.innerText = "View All Songs in playlist"
@@ -33,7 +36,7 @@ const renderSong = (element, song, albumId, artistId) => {
     //         });
     // })
 
-    element.append(backHomeLink);
+    element.append(backToAlbumButton);
 }
 
 export {renderSong}

@@ -16,7 +16,6 @@ const renderAllAlbums = (element, albums, artistId) => {
           <h4 class="album__record-label">Record Label: ${albums[i].recordLabel}</h4>  
           <br>     
       `;
-        console.log(albums)
 
         section.addEventListener('click', () => {
             renderAlbum(element, albums[i], artistId);

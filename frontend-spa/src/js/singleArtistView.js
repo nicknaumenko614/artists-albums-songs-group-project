@@ -12,10 +12,12 @@ const renderArtist = (element, artist) => {
       <section class="artist">
         <h2 class="artist__name">${artist.artistName}</h2>
         <img src="${artist.imageUrl}" alt="Artist Image" width="300">  
+        displayAddAlbumToArtistForm(element, artist.id);
         <br>
         <h2>Please select from ${artist.artistName}'s Albums below:</h2>
                   
       </section>
+      
   `
     const albums = document.createElement('ul');
 
@@ -33,17 +35,23 @@ const renderArtist = (element, artist) => {
 
     displayAddAlbumToArtistForm(element, artist.id);
 
-    const backHomeLink = document.createElement('a');
-    backHomeLink.innerText = "View All Artists in Playlist"
-    backHomeLink.addEventListener('click', () => {
+    const backHomeButton = document.createElement('button');
+    backHomeButton.innerText = "Back to HOME - All Artists"
+    backHomeButton.classList.add('back__button')
+    backHomeButton.addEventListener('click', () => {
         fetchArtists()
             .then(artists => {
                 renderAllArtists(library, artists)
             });
     })
     element.append(albums);
-    element.append(backHomeLink);
+    element.append(backHomeButton);
+
+
 }
+
+
+
 
 function displayAddAlbumToArtistForm(element, artistId) {
     const nameInput = document.createElement('input');
