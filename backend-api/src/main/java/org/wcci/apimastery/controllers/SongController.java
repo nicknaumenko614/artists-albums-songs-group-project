@@ -3,6 +3,7 @@ package org.wcci.apimastery.controllers;
 import org.springframework.web.bind.annotation.*;
 import org.wcci.apimastery.entities.*;
 import org.wcci.apimastery.repositories.SongRepository;
+import org.wcci.apimastery.storage.AlbumStorage;
 import org.wcci.apimastery.storage.CommentStorage;
 import org.wcci.apimastery.storage.SongStorage;
 
@@ -13,10 +14,12 @@ import java.util.Collection;
 public class SongController {
     SongStorage songStorage;
     CommentStorage commentStorage;
+    AlbumStorage albumStorage;
 
-    public SongController(SongStorage songStorage, CommentStorage commentStorage) {
+    public SongController(SongStorage songStorage, CommentStorage commentStorage, AlbumStorage albumStorage) {
         this.songStorage = songStorage;
         this.commentStorage = commentStorage;
+        this.albumStorage = albumStorage;
     }
 
     @GetMapping("/api/songs/")
@@ -34,10 +37,10 @@ public class SongController {
 //        return songStorage.save(song);
 //    }
 
-    @DeleteMapping("/api/songs/delete/{id}")
-    public Collection<Song> deleteSong(@PathVariable long id) {
-        songStorage.deleteSongById(id);
-        return songStorage.retrieveAllSongs();
+    @DeleteMapping("/api/songs/delete/{songId}/{albumId}")
+    public Album deleteSong(@PathVariable long songId, @PathVariable long albumId) {
+        songStorage.deleteSongById(songId);
+        return albumStorage.retrieveAlbumById(albumId);
     }
 
     @PatchMapping("/api/songs/{id}/Comment/")

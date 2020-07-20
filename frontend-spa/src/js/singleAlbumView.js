@@ -4,6 +4,8 @@ import {renderSong} from "./singleSongView.js";
 import {library} from "./app.js"
 import {patchNewSongToAlbum} from "./apiHelper.js";
 import {renderArtist} from "./singleArtistView.js";
+import {fetchAlbums} from "./apiHelper.js";
+import {renderAllAlbums} from "./allAlbumsView.js";
 
 
 const renderAlbum = (element, album, artistId) => {
@@ -43,9 +45,6 @@ const renderAlbum = (element, album, artistId) => {
                 renderArtist(library, artist)
             });
     })
-
-
-
     // const backHomeLink = document.createElement('a');
     // backHomeLink.innerText = "View All Albums in Playlist"
     // backHomeLink.addEventListener('click', () => {
@@ -55,8 +54,12 @@ const renderAlbum = (element, album, artistId) => {
     //         });
     // })
 
+
+
+
     element.append(songs);
     element.append(backToArtistButton)
+    //element.append(backHomeLink)
 }
 
 function displayAddSongToAlbumForm(element, albumId, artistId) {

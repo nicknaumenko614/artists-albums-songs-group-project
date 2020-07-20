@@ -2,6 +2,7 @@ import {clearElementChildren} from "./utils.js";
 import {fetchAlbumById} from "./apiHelper.js";
 import {library} from "./app.js";
 import {renderAlbum} from "./app.js";
+import {deleteSong} from "./apiHelper.js";
 
 const renderSong = (element, song, albumId, artistId) => {
     clearElementChildren(element);
@@ -25,6 +26,15 @@ const renderSong = (element, song, albumId, artistId) => {
             });
     })
 
+    const deleteSongButton = document.createElement('button');
+    deleteSongButton.innerText = "Delete This Song"
+    deleteSongButton.classList.add = "delete__button"
+    deleteSongButton.addEventListener('click', () => {
+        deleteSong(song.id, albumId)
+            .then(album => {
+                renderAlbum(library, album, artistId)
+            });
+    })
 
 
     // const backHomeLink = document.createElement('a');
@@ -37,6 +47,9 @@ const renderSong = (element, song, albumId, artistId) => {
     // })
 
     element.append(backToAlbumButton);
+    element.append(deleteSongButton);
+
+    // element.append(backHomeLink)
 }
 
 export {renderSong}
