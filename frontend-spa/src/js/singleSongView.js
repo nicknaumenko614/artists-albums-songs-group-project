@@ -1,9 +1,9 @@
 import {clearElementChildren} from "./utils.js";
-import {fetchSongs} from "./apiHelper.js";
+import {fetchAlbumById} from "./apiHelper.js";
 import {library} from "./app.js";
-import {renderAllSongs} from "./allSongsView.js";
+import {renderAlbum} from "./app.js";
 
-const renderSong = (element, song) => {
+const renderSong = (element, song, albumId) => {
     clearElementChildren(element);
     element.innerHTML = `
         
@@ -16,13 +16,22 @@ const renderSong = (element, song) => {
       </section>
   `
     const backHomeLink = document.createElement('a');
-    backHomeLink.innerText = "View All Songs in playlist"
+    backHomeLink.innerText = "Back to Album"
     backHomeLink.addEventListener('click', () => {
-        fetchSongs()
-            .then(songs => {
-                renderAllSongs(library, songs)
+        fetchAlbumById(albumId)
+            .then(album => {
+                renderAlbum(library, album)
             });
     })
+
+    // const backHomeLink = document.createElement('a');
+    // backHomeLink.innerText = "View All Songs in playlist"
+    // backHomeLink.addEventListener('click', () => {
+    //     fetchSongs()
+    //         .then(songs => {
+    //             renderAllSongs(library, songs)
+    //         });
+    // })
 
     element.append(backHomeLink);
 }

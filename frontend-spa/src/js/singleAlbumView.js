@@ -26,7 +26,7 @@ const renderAlbum = (element, album) => {
 
             songs.append(li);
             li.addEventListener('click', () => {
-                renderSong(element, song)
+                renderSong(element, song, album.id)
             })
         })
     }
