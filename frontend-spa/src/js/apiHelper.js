@@ -80,6 +80,18 @@ const deleteAlbum = async (albumId, artistId) => {
     }).then(response => response.json())
 }
 
+const deleteArtist = async (artistId) => {
+
+    return fetch('http://localhost:8080/api/artists/delete/' + artistId, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(artistId)
+    }).then(response => response.json())
+}
+
+
 export {
     fetchArtists,
     fetchSongs,
@@ -90,5 +102,6 @@ export {
     fetchAlbumById,
     fetchArtistById,
     deleteSong,
-    deleteAlbum
+    deleteAlbum,
+    deleteArtist
 }

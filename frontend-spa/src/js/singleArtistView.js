@@ -4,6 +4,7 @@ import {renderAllArtists} from "./allArtistsView.js";
 import {renderAlbum} from "./app.js";
 import {library} from "./app.js";
 import {patchNewAlbumToArtist} from "./apiHelper.js";
+import {deleteArtist} from "./apiHelper.js";
 
 const renderArtist = (element, artist) => {
     clearElementChildren(element);
@@ -44,8 +45,20 @@ const renderArtist = (element, artist) => {
                 renderAllArtists(library, artists)
             });
     })
+
+    const deleteArtistButton = document.createElement('button');
+    deleteArtistButton.innerText = "Delete This Artist"
+    deleteArtistButton.classList.add = "delete__button"
+    console.log(artist.id)
+    deleteArtistButton.addEventListener('click', () => {
+        deleteArtist(artist.id)
+            .then(artists => {
+                renderAllArtists(library, artists)
+            });
+    })
     element.append(albums);
     element.append(backHomeButton);
+    element.append(deleteArtistButton)
 
 
 }
@@ -77,7 +90,7 @@ function displayAddAlbumToArtistForm(element, artistId) {
     submitButton.classList.add('album__form-submit');
     element.append(submitButton);
 
-    submitButton.addEventListener('click', () => {
+   submitButton.addEventListener('click', () => {
         const newAlbum = {
             "albumName": nameInput.value,
             "imageUrl": urlInput.value,
@@ -88,6 +101,8 @@ function displayAddAlbumToArtistForm(element, artistId) {
                 renderArtist(element, artist)
             })
     })
+
+    
 }
 
 export {renderArtist}
