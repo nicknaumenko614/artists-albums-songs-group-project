@@ -22,11 +22,11 @@ public class Populator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Artist artist1 = new Artist("Bjork", "www.artist1.com");
-        Artist artist2 = new Artist("The Mars Volta", "www.artist2.com");
-        Artist artist3 = new Artist("Nirvana", "www.artist3.com");
-        Artist artist4 = new Artist("Incubus", "www.artist4.com" );
-        Artist artist5 = new Artist("The Cool Kids", "www.artist5.com");
+        Artist artist1 = new Artist("Bjork", "https://www.biography.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_700/MTE5NTU2MzE2NDY0NDQ5MDM1/bjork-9542528-2-raw.webp");
+        Artist artist2 = new Artist("The Mars Volta", "https://images.app.goo.gl/HPPMLzyjSMczY3jj9");
+        Artist artist3 = new Artist("Nirvana", "https://images.app.goo.gl/yaoCPEcmtTeficx96");
+        Artist artist4 = new Artist("Incubus", "https://images.app.goo.gl/2g4T9Gi6YQcw2GHS7" );
+        Artist artist5 = new Artist("The Cool Kids", "https://images.app.goo.gl/AcnRcWtya9nEE7w87");
         artistRepo.save(artist1);
         artistRepo.save(artist2);
         artistRepo.save(artist3);
@@ -34,10 +34,10 @@ public class Populator implements CommandLineRunner {
         artistRepo.save(artist5);
         Album album1 = new Album("Vulnicara", "Capital", "www.album1.com", artist1);
         Album album2 = new Album("Homogenic", "Capitol", "www.album2.com", artist1);
-        Album album3= new Album("Francis The Mute", "Universal", "www.album5.com",artist2);
-        Album album4 = new Album("Nevermind", "Sup Pop", "www.album3.com",artist3);
-        Album album5 = new Album("Morning View", "Epic Records", "www.album4.com",artist4);
-        Album album6= new Album("Bake Sale","XL", "www.album6.com",artist5);
+        Album album3= new Album("Francis The Mute", "Universal", "https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Frances_the_Mute.png/220px-Frances_the_Mute.png",artist2);
+        Album album4 = new Album("Nevermind", "Sup Pop", "https://images.app.goo.gl/tSpq1oHCifhKpGG2A",artist3);
+        Album album5 = new Album("Morning View", "Epic Records", "https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Incubus_-_Morning_View.jpg/220px-Incubus_-_Morning_View.jpg",artist4);
+        Album album6= new Album("Bake Sale","XL", "https://upload.wikimedia.org/wikipedia/en/thumb/e/ea/The_Cool_Kids_The_Bake_Sale.jpg/220px-The_Cool_Kids_The_Bake_Sale.jpg",artist5);
         albumRepo.save(album1);
         albumRepo.save(album2);
         albumRepo.save(album3);
