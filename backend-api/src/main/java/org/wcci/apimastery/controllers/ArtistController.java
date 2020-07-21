@@ -61,5 +61,5 @@ public class ArtistController {
         artistStorage.deleteArtistById(id);
         return artistStorage.retrieveAllArtists();
     }
-    
+
 }
