@@ -6,6 +6,7 @@ import {patchNewSongToAlbum} from "./apiHelper.js";
 import {renderArtist} from "./singleArtistView.js";
 import {fetchAlbums} from "./apiHelper.js";
 import {renderAllAlbums} from "./allAlbumsView.js";
+import {deleteAlbum} from "./apiHelper.js"
 
 
 const renderAlbum = (element, album, artistId) => {
@@ -45,6 +46,17 @@ const renderAlbum = (element, album, artistId) => {
                 renderArtist(library, artist)
             });
     })
+
+    const deleteAlbumButton = document.createElement('button');
+    deleteAlbumButton.innerText = "Delete This Album"
+    deleteAlbumButton.classList.add = "delete__button"
+    deleteAlbumButton.addEventListener('click', () => {
+        deleteAlbum(album.id, artistId)
+            .then(artist => {
+                renderArtist(library, artist, artistId)
+            });
+    })
+
     // const backHomeLink = document.createElement('a');
     // backHomeLink.innerText = "View All Albums in Playlist"
     // backHomeLink.addEventListener('click', () => {
@@ -59,6 +71,7 @@ const renderAlbum = (element, album, artistId) => {
 
     element.append(songs);
     element.append(backToArtistButton)
+    element.append(deleteAlbumButton)
     //element.append(backHomeLink)
 }
 

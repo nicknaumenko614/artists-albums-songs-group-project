@@ -15,11 +15,13 @@ public class AlbumController {
     AlbumStorage albumStorage;
     SongStorage songStorage;
     CommentStorage commentStorage;
+    ArtistStorage artistStorage;
 
-    public AlbumController(AlbumStorage albumStorage, SongStorage songStorage, CommentStorage commentStorage) {
+    public AlbumController(AlbumStorage albumStorage, SongStorage songStorage, CommentStorage commentStorage, ArtistStorage artistStorage) {
         this.albumStorage = albumStorage;
         this.songStorage = songStorage;
         this.commentStorage = commentStorage;
+        this.artistStorage = artistStorage;
     }
 
     @GetMapping("/api/albums/")
@@ -54,9 +56,15 @@ public class AlbumController {
         return commentToAdd.getAlbum();
     }
 
-    @DeleteMapping("/api/albums/delete/{id}")
-    public Collection<Album> deleteAlbum(@PathVariable long id) {
-        albumStorage.deleteAlbumById(id);
-        return albumStorage.retrieveAllAlbums();
+    @DeleteMapping("/api/albums/delete/{albumId}/{artistId}")
+    public Artist deleteAlbum(@PathVariable long albumId, @PathVariable long artistId) {
+        albumStorage.deleteAlbumById(albumId);
+        return artistStorage.retrieveArtistById(artistId);
     }
+
+//    @DeleteMapping("/api/albums/delete/{id}")
+//    public Collection<Album> deleteAlbum(@PathVariable long id) {
+//        albumStorage.deleteAlbumById(id);
+//        return albumStorage.retrieveAllAlbums();
+//    }
 }
