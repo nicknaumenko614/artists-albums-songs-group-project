@@ -55,7 +55,7 @@ public class SongController {
     @PatchMapping("/api/songs/{songId}/comment/")
     public Song addCommentToSong(@PathVariable long songId, @RequestBody String comment) {
         Song song = songStorage.retrieveSongById(songId);
-        song.addComment(comment);
+        song.addComment(comment.toString());
         songStorage.save(song);
         return song;
     }

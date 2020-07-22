@@ -69,7 +69,7 @@ function addCommentToSong(element, songId) {
 console.log(songId)
 
     const textInput = document.createElement('input');
-    textInput.type = 'textarea cols="30" rows="10" maxlength="250"';
+    textInput.type = 'textarea';
     textInput.placeholder = 'Enter Your Comment';
     textInput.classList.add('song__comment');
     element.append(textInput);
@@ -82,13 +82,10 @@ console.log(songId)
     element.append(submitButton);
 
     submitButton.addEventListener('click', () => {
-        const newComment = {
-
-            "text": textInput.value,
-        }
-        addNewCommentToSong(newComment, songId)
+    console.log(textInput.value)
+        addNewCommentToSong(textInput.value, songId)
             .then(song => {
-                renderSong(element, songId)
+                renderSong(element, song)
             })
     })
 }
