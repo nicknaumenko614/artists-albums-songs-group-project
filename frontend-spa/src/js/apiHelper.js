@@ -91,6 +91,16 @@ const deleteArtist = async (artistId) => {
     }).then(response => response.json())
 }
 
+const addNewCommentToSong = async (song, songId) => {
+    return fetch('http://localhost:8080/api/songs/' + songId +'/comment/' , {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(song)
+    }).then(response => response.json())
+}
+
 
 export {
     fetchArtists,
@@ -103,5 +113,6 @@ export {
     fetchArtistById,
     deleteSong,
     deleteAlbum,
-    deleteArtist
+    deleteArtist,
+    addNewCommentToSong
 }

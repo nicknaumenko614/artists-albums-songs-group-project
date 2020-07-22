@@ -3,6 +3,7 @@ import {fetchAlbumById} from "./apiHelper.js";
 import {library} from "./app.js";
 import {renderAlbum} from "./app.js";
 import {deleteSong} from "./apiHelper.js";
+import {addNewCommentToSong} from "./apiHelper.js";
 
 const renderSong = (element, song, albumId, artistId) => {
     clearElementChildren(element);
@@ -36,6 +37,18 @@ const renderSong = (element, song, albumId, artistId) => {
             });
     })
 
+    const comments = document.createElement('section');
+    if (song.comments != null) {
+        song.comments.forEach((comment) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a class = "comment__name">${comment}</a>`
+            comments.append(li);
+        })
+    }
+
+
+    addCommentToSong(element, song.id)
+
 
     // const backHomeLink = document.createElement('a');
     // backHomeLink.innerText = "View All Songs in playlist"
@@ -46,10 +59,38 @@ const renderSong = (element, song, albumId, artistId) => {
     //         });
     // })
 
+    element.append(comments);
     element.append(backToAlbumButton);
     element.append(deleteSongButton);
-
     // element.append(backHomeLink)
+}
+
+function addCommentToSong(element, songId) {
+console.log(songId)
+
+    const textInput = document.createElement('input');
+    textInput.type = 'textarea cols="30" rows="10" maxlength="250"';
+    textInput.placeholder = 'Enter Your Comment';
+    textInput.classList.add('song__comment');
+    element.append(textInput);
+
+
+
+    const submitButton = document.createElement('button');
+    submitButton.innerText = "Submit Comment";
+    submitButton.classList.add('song__comment-form-submit');
+    element.append(submitButton);
+
+    submitButton.addEventListener('click', () => {
+        const newComment = {
+
+            "text": textInput.value,
+        }
+        addNewCommentToSong(newComment, songId)
+            .then(song => {
+                renderSong(element, songId)
+            })
+    })
 }
 
 export {renderSong}

@@ -4,8 +4,6 @@ import {renderSong} from "./singleSongView.js";
 import {library} from "./app.js"
 import {patchNewSongToAlbum} from "./apiHelper.js";
 import {renderArtist} from "./singleArtistView.js";
-import {fetchAlbums} from "./apiHelper.js";
-import {renderAllAlbums} from "./allAlbumsView.js";
 import {deleteAlbum} from "./apiHelper.js"
 
 
