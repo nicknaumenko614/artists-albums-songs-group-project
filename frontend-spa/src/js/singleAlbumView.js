@@ -5,6 +5,7 @@ import {library} from "./app.js"
 import {patchNewSongToAlbum} from "./apiHelper.js";
 import {renderArtist} from "./singleArtistView.js";
 import {deleteAlbum} from "./apiHelper.js"
+import {addNewCommentToAlbum} from "./apiHelper.js";
 
 
 const renderAlbum = (element, album, artistId) => {
@@ -63,13 +64,30 @@ const renderAlbum = (element, album, artistId) => {
     //             renderAllAlbums(library, albums)
     //         });
     // })
+    const comments = document.createElement('section');
+    if (album.comments != null) {
+        album.comments.forEach((comment) => {
+            const li = document.createElement('li');
+            li.innerText = JSON.parse(comment);
+            comments.append(li);
+        })
+    }
 
+    const commentDisplay = document.createElement('section');
+    commentDisplay.innerHTML = '<h2>Comments for the album:</h2>'
+
+
+
+
+    addCommentToAlbum(element, album.id)
 
 
 
     element.append(songs);
-    element.append(backToArtistButton)
-    element.append(deleteAlbumButton)
+    element.append(backToArtistButton);
+    element.append(deleteAlbumButton);
+    element.append(commentDisplay);
+    element.append(comments);
     //element.append(backHomeLink)
 }
 
@@ -109,5 +127,30 @@ function displayAddSongToAlbumForm(element, albumId, artistId) {
             })
     })
 }
+
+function addCommentToAlbum(element, albumId) {
+
+    const textInput = document.createElement('input');
+    textInput.type = 'textarea';
+    textInput.placeholder = 'Enter Your Comment';
+    textInput.classList.add('album__comment');
+    element.append(textInput);
+
+
+
+    const submitButton = document.createElement('button');
+    submitButton.innerText = "Submit Comment";
+    submitButton.classList.add('album__comment-form-submit');
+    element.append(submitButton);
+
+    submitButton.addEventListener('click', () => {
+
+        addNewCommentToAlbum(textInput.value, albumId)
+            .then(album => {
+                renderAlbum(element, album)
+            })
+    })
+}
+
 
 export {renderAlbum}

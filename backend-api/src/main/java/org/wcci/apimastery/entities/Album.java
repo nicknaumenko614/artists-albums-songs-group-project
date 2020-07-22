@@ -3,6 +3,7 @@ package org.wcci.apimastery.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -20,8 +21,8 @@ public class Album {
     private Artist artist;
     @OneToMany(mappedBy = "album", orphanRemoval = true)
     private Collection<Song> songs;
-    @OneToMany(mappedBy = "album", orphanRemoval = true)
-    private Collection<AlbumComment> comments;
+    @ElementCollection
+    private List<String> comments;
 
     public Album() {
     }
@@ -57,8 +58,16 @@ public class Album {
     public Collection<Song> getSongs() {
         return songs;
     }
-    public Collection<AlbumComment> getComments() {
+
+    public List<String> getComments() {
         return comments;
+    }
+
+    public void addComment(String comment){
+        if(comments==null){
+            comments=new ArrayList<>();
+        }
+        comments.add(comment);
     }
 
     @Override

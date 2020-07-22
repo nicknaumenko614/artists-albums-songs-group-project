@@ -5,6 +5,7 @@ import {renderAlbum} from "./app.js";
 import {library} from "./app.js";
 import {patchNewAlbumToArtist} from "./apiHelper.js";
 import {deleteArtist} from "./apiHelper.js";
+import {addNewCommentToArtist} from "./apiHelper.js";
 
 const renderArtist = (element, artist) => {
     clearElementChildren(element);
@@ -56,13 +57,29 @@ const renderArtist = (element, artist) => {
                 renderAllArtists(library, artists)
             });
     })
+
+    const comments = document.createElement('section');
+    if (artist.comments != null) {
+        artist.comments.forEach((comment) => {
+            const li = document.createElement('li');
+            li.innerText = JSON.parse(comment);
+            comments.append(li);
+        })
+    }
+
+    const commentDisplay = document.createElement('section');
+    commentDisplay.innerHTML = '<h2>Comments for the artist:</h2>'
+
+    addCommentToArtist(element, artist.id)
+
     element.append(albums);
     element.append(backHomeButton);
-    element.append(deleteArtistButton)
+    element.append(deleteArtistButton);
+    element.append(commentDisplay);
+    element.append(comments);
 
 
 }
-
 
 
 
@@ -103,6 +120,30 @@ function displayAddAlbumToArtistForm(element, artistId) {
     })
 
     
+}
+
+function addCommentToArtist(element, artistId) {
+
+    const textInput = document.createElement('input');
+    textInput.type = 'textarea';
+    textInput.placeholder = 'Enter Your Comment';
+    textInput.classList.add('album__comment');
+    element.append(textInput);
+
+
+
+    const submitButton = document.createElement('button');
+    submitButton.innerText = "Submit Comment";
+    submitButton.classList.add('album__comment-form-submit');
+    element.append(submitButton);
+
+    submitButton.addEventListener('click', () => {
+        console.log(textInput.value)
+        addNewCommentToArtist(textInput.value, artistId)
+            .then(artist => {
+                renderArtist(element, artist)
+            })
+    })
 }
 
 export {renderArtist}

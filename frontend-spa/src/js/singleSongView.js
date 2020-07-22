@@ -41,11 +41,13 @@ const renderSong = (element, song, albumId, artistId) => {
     if (song.comments != null) {
         song.comments.forEach((comment) => {
             const li = document.createElement('li');
-            li.innerHTML = `<a class = "comment__name">${comment}</a>`
+            li.innerText = JSON.parse(comment);
             comments.append(li);
         })
     }
 
+    const commentDisplay = document.createElement('section');
+    commentDisplay.innerHTML = '<h2>Comments for the song:</h2>'
 
     addCommentToSong(element, song.id)
 
@@ -59,14 +61,15 @@ const renderSong = (element, song, albumId, artistId) => {
     //         });
     // })
 
-    element.append(comments);
+
     element.append(backToAlbumButton);
     element.append(deleteSongButton);
+    element.append(commentDisplay);
+    element.append(comments);
     // element.append(backHomeLink)
 }
 
 function addCommentToSong(element, songId) {
-console.log(songId)
 
     const textInput = document.createElement('input');
     textInput.type = 'textarea';

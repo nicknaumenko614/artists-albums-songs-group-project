@@ -48,13 +48,21 @@ public class ArtistController {
         return albumToAdd.getArtist();
     }
 
-    @PatchMapping("/api/artists/{id}/Comment/")
-    public Artist addCommentToArtist(@PathVariable long id, @RequestBody ArtistComment comment) {
-        Artist artist = artistStorage.retrieveArtistById(id);
-        ArtistComment commentToAdd = new ArtistComment(comment.getText(), comment.getAuthorName(), artist);
-        commentStorage.addComment(commentToAdd);
-        return commentToAdd.getArtist();
+    @PatchMapping("/api/artists/{artistId}/comment/")
+    public Artist addCommentToArtist(@PathVariable long artistId, @RequestBody String comment) {
+        Artist artist = artistStorage.retrieveArtistById(artistId);
+        artist.addComment(comment);
+        artistStorage.save(artist);
+        return artist;
     }
+
+//    @PatchMapping("/api/artists/{id}/Comment/")
+//    public Artist addCommentToArtist(@PathVariable long id, @RequestBody ArtistComment comment) {
+//        Artist artist = artistStorage.retrieveArtistById(id);
+//        ArtistComment commentToAdd = new ArtistComment(comment.getText(), comment.getAuthorName(), artist);
+//        commentStorage.addComment(commentToAdd);
+//        return commentToAdd.getArtist();
+//    }
 
     @DeleteMapping("/api/artists/delete/{id}")
     public Collection<Artist> deleteArtist(@PathVariable long id) {

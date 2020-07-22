@@ -1,10 +1,9 @@
 package org.wcci.apimastery.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,8 +15,8 @@ public class Artist {
     private String imageUrl;
     @OneToMany(mappedBy = "artist", orphanRemoval = true)
     private Collection<Album> albums;
-    @OneToMany(mappedBy = "artist", orphanRemoval = true)
-    private Collection<ArtistComment> comments;
+    @ElementCollection
+    private List<String> comments;
 
 
     public Artist() {
@@ -46,12 +45,19 @@ public class Artist {
         return imageUrl;
     }
 
-    public Collection<ArtistComment> getComments() {
+    public List<String> getComments() {
         return comments;
     }
 
     public void setArtistName(String artistName) {
         this.artistName = artistName;
+    }
+
+    public void addComment(String comment){
+        if(comments==null){
+            comments=new ArrayList<>();
+        }
+        comments.add(comment);
     }
 
 
