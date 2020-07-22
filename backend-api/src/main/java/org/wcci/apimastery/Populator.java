@@ -22,18 +22,18 @@ public class Populator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Artist artist1 = new Artist("Bjork", "https://www.biography.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_700/MTE5NTU2MzE2NDY0NDQ5MDM1/bjork-9542528-2-raw.webp");
-        Artist artist2 = new Artist("The Mars Volta", "https://images.app.goo.gl/HPPMLzyjSMczY3jj9");
-        Artist artist3 = new Artist("Nirvana", "https://images.app.goo.gl/yaoCPEcmtTeficx96");
-        Artist artist4 = new Artist("Incubus", "https://images.app.goo.gl/2g4T9Gi6YQcw2GHS7" );
-        Artist artist5 = new Artist("The Cool Kids", "https://images.app.goo.gl/AcnRcWtya9nEE7w87");
+        Artist artist1 = new Artist("Bjork", "https://www.telegraph.co.uk/content/dam/beauty/June/June%2025/Bjork-Buns-xlarge.jpg");
+        Artist artist2 = new Artist("The Mars Volta", "http://assets.rollingstone.com/assets/2005/article/the-mars-volta-20050310/180959/large_rect/1421271678/1401x788-86114989.jpg");
+        Artist artist3 = new Artist("Nirvana", "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-nirvana-e9e22e4b-f7d9-4fc7-bd94-23c30084ce94.jpg");
+        Artist artist4 = new Artist("Incubus", "https://sa.kapamilya.com/absnews/abscbnnews/media/2017/sports/11/18/incubus-photo-1.jpg?ext=.jpg" );
+        Artist artist5 = new Artist("The Cool Kids", "http://commercial-song.net/wp-content/uploads/2018/08/The_Cool_Kids_Fox.jpg");
         artistRepo.save(artist1);
         artistRepo.save(artist2);
         artistRepo.save(artist3);
         artistRepo.save(artist4);
         artistRepo.save(artist5);
-        Album album1 = new Album("Vulnicara", "Capital", "www.album1.com", artist1);
-        Album album2 = new Album("Homogenic", "Capitol", "www.album2.com", artist1);
+        Album album1 = new Album("Vulnicara", "Capital", "https://i.guim.co.uk/img/media/04a97c275e6dd86c3a7e85eb6c735c489ea15b9e/0_0_2400_1440/master/2400.jpg", artist1);
+        Album album2 = new Album("Homogenic", "Capitol", "https://images-na.ssl-images-amazon.com/images/I/7104H7MyhNL._SX425_.jpg", artist1);
         Album album3= new Album("Francis The Mute", "Universal", "https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Frances_the_Mute.png/220px-Frances_the_Mute.png",artist2);
         Album album4 = new Album("Nevermind", "Sup Pop", "https://images.app.goo.gl/tSpq1oHCifhKpGG2A",artist3);
         Album album5 = new Album("Morning View", "Epic Records", "https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Incubus_-_Morning_View.jpg/220px-Incubus_-_Morning_View.jpg",artist4);
