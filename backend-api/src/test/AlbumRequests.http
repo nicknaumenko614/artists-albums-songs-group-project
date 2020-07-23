@@ -1,0 +1,32 @@
+GET http://localhost:8080/api/albums/
+
+###
+GET http://localhost:8080/api/albums/4/
+
+
+
+###
+PATCH http://localhost:8080/api/albums/4/Song/
+Content-Type: application/json
+
+{
+  "songName": "Added SOng 2",
+  "duration": "2:22",
+  "album": "Added Album ",
+  "imageUrl" : "addedURL.com"
+}
+
+###
+
+PATCH http://localhost:8080/api/albums/4/Comment/
+Content-Type: application/json
+
+{
+  "authorName": "Nick",
+  "text": "Nick added one more comment "
+}
+
+
+
+###
+DELETE http://localhost:8080/api/albums/delete/4

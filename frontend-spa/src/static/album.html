@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Album</title>
-    <link rel="stylesheet" type="text/css" href="/frontend-spa/src/css/style.css">
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="/frontend-spa/src/css/style.css"
+    />
 </head>
 <body>
-    <h1>Album Name: Björk – Homogenic</h1>
-
-    <img src="/frontend-spa/src/images/bjork-homogenic.jpg" width="400" alt="homogenic">
-
-   <ol>
-       <li><a href="/frontend-spa/src/static/song.html">Hunter</a></li>
-       <li>song2</li>
-       <li>song3</li>
-       <li>song4</li>
-
-   </ol> 
+<h1>Album Name: Björk – Homogenic</h1>
+<img
+        src="/frontend-spa/src/images/bjork-homogenic.jpg"
+        width="400"
+        alt="homogenic"
+/>
+<ol>
+    <li><a href="/frontend-spa/src/static/song.html">Hunter</a></li>
+    <li>song2</li>
+    <li>song3</li>
+    <li>song4</li>
+</ol>
+<h3>Add a new song below</h3>
+<div class="input-align">
+    <label for="song__name">Song Name: </label>
+    <input type="text" />
+    <br/>
+    <label for="Song__duration">Song Duration: </label>
+    <input type="text" />
+    <br/>
+    <label for="Song__clipartURL">Song Clipart URL: </label>
+    <input type="text" />
+    <br/>
+    <label for="Song__URL">Song URL: </label>
+    <input type="text" />
+    <br/>
+    <button>Submit</button>
+</div>
 </body>
 </html>

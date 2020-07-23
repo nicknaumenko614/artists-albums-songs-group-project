@@ -1,0 +1,19 @@
+GET http://localhost:8080/api/songs/
+
+###
+
+GET http://localhost:8080/api/songs/9/
+
+
+###
+
+PATCH http://localhost:8080/api/songs/5/Comment/
+Content-Type: application/json
+
+{
+  "authorName": "Musa",
+  "text": "Musa added one more comment "
+}
+
+###
+DELETE http://localhost:8080/api/songs/delete/5/

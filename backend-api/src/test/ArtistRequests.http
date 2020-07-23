@@ -1,0 +1,33 @@
+GET http://localhost:8080/api/artists/
+
+
+###
+GET http://localhost:8080/api/artists/7/
+
+
+
+###
+
+POST http://localhost:8080/api/artists/
+Content-Type: application/json
+
+{
+  "artistName": "Another New Test Artist",
+  "imageUrl": "www.testUrl2.com"
+}
+
+
+###
+
+PATCH http://localhost:8080/api/artists/7/Album/
+Content-Type: application/json
+
+{
+  "albumName": "First Test Album",
+  "recordLabel": "Sony",
+  "imageUrl": "Albmum Image.com"
+}
+
+
+###
+DELETE http://localhost:8080/api/artists/delete/7/

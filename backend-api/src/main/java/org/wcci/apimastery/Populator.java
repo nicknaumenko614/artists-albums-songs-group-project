@@ -1,0 +1,143 @@
+package org.wcci.apimastery;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.wcci.apimastery.entities.Album;
+import org.wcci.apimastery.entities.Artist;
+import org.wcci.apimastery.entities.Song;
+import org.wcci.apimastery.repositories.AlbumRepository;
+import org.wcci.apimastery.repositories.ArtistRepository;
+import org.wcci.apimastery.repositories.SongRepository;
+import org.wcci.apimastery.storage.ArtistStorage;
+
+@Component
+public class Populator implements CommandLineRunner {
+    @Autowired
+    SongRepository songRepo;
+    @Autowired
+    ArtistRepository artistRepo;
+    @Autowired
+    AlbumRepository albumRepo;
+
+    @Override
+    public void run(String... args) throws Exception {
+        Artist artist1 = new Artist("Bjork", "https://www.telegraph.co.uk/content/dam/beauty/June/June%2025/Bjork-Buns-xlarge.jpg");
+        Artist artist2 = new Artist("The Mars Volta", "http://assets.rollingstone.com/assets/2005/article/the-mars-volta-20050310/180959/large_rect/1421271678/1401x788-86114989.jpg");
+        Artist artist3 = new Artist("Nirvana", "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-nirvana-e9e22e4b-f7d9-4fc7-bd94-23c30084ce94.jpg");
+        Artist artist4 = new Artist("Incubus", "https://sa.kapamilya.com/absnews/abscbnnews/media/2017/sports/11/18/incubus-photo-1.jpg?ext=.jpg" );
+        Artist artist5 = new Artist("The Cool Kids", "http://commercial-song.net/wp-content/uploads/2018/08/The_Cool_Kids_Fox.jpg");
+        artistRepo.save(artist1);
+        artistRepo.save(artist2);
+        artistRepo.save(artist3);
+        artistRepo.save(artist4);
+        artistRepo.save(artist5);
+        Album album1 = new Album("Vulnicara", "Capital", "https://i.guim.co.uk/img/media/04a97c275e6dd86c3a7e85eb6c735c489ea15b9e/0_0_2400_1440/master/2400.jpg", artist1);
+        Album album2 = new Album("Homogenic", "Capitol", "https://images-na.ssl-images-amazon.com/images/I/7104H7MyhNL._SX425_.jpg", artist1);
+        Album album3= new Album("Francis The Mute", "Universal", "https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Frances_the_Mute.png/220px-Frances_the_Mute.png",artist2);
+        Album album4 = new Album("Nevermind", "Sup Pop", "https://images.app.goo.gl/tSpq1oHCifhKpGG2A",artist3);
+        Album album5 = new Album("Morning View", "Epic Records", "https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Incubus_-_Morning_View.jpg/220px-Incubus_-_Morning_View.jpg",artist4);
+        Album album6= new Album("Bake Sale","XL", "https://upload.wikimedia.org/wikipedia/en/thumb/e/ea/The_Cool_Kids_The_Bake_Sale.jpg/220px-The_Cool_Kids_The_Bake_Sale.jpg",artist5);
+        albumRepo.save(album1);
+        albumRepo.save(album2);
+        albumRepo.save(album3);
+        albumRepo.save(album4);
+        albumRepo.save(album5);
+        albumRepo.save(album6);
+        Song song101 = new Song("Stonemilker", "4:20", album1, "https://www.youtube.com/embed/gQEyezu7G20");
+        Song song102 = new Song("Lionsong", "6:08", album1, "stonemilker.com");
+        Song song103 = new Song("History Of Touches", "2:53", album1, "stonemilker.com");
+        Song song104 = new Song("Black Lake", "10:08", album1, "stonemilker.com");
+        Song song105 = new Song("Family", "8:02", album1, "stonemilker.com");
+        Song song106 = new Song("Notget", "6:26", album1, "stonemilker.com");
+        Song song107 = new Song("Atom Dance", "8:09", album1, "stonemilker.com");
+        Song song108 = new Song("Mouth Mantra", "6:09", album1, "stonemilker.com");
+        Song song109 = new Song("Quicksand", "3:45", album1, "stonemilker.com");
+        Song song201 = new Song("Hunter", "3:79", album2, "https://www.youtube.com/embed/WxL1rw6cw-E");
+        Song song202 = new Song("Joga", "3:79", album2, "Cygnus.com");
+        Song song203 = new Song("Unravel", "3:79", album2, "Cygnus.com");
+        Song song204 = new Song("Bachelorette", "3:79", album2, "Cygnus.com");
+        Song song205 = new Song("All Neon Like", "3:79", album2, "Cygnus.com");
+        Song song206 = new Song("5 years", "3:79", album2, "Cygnus.com");
+        Song song207 = new Song("Immature", "3:79", album2, "Cygnus.com");
+        Song song208 = new Song("Alarm Call", "3:79", album2, "Cygnus.com");
+        Song song209 = new Song("All is Full of Love", "3:79", album2, "Cygnus.com");
+        Song song301 = new Song("Cygnus....Vismund Cygnus", "3:79", album3, "https://www.youtube.com/embed/FVAvBtXqCNY");
+        Song song302 = new Song("The Widow", "3:79", album3, "Cygnus.com");
+        Song song303 = new Song("L'Via L'Viaquez", "3:79", album3, "Cygnus.com");
+        Song song304 = new Song("Miranda That Ghost Just Isn't Holy Anymore", "3:79", album3, "Cygnus.com");
+        Song song305 = new Song("Cassandra Gemini", "3:79", album3, "Cygnus.com");
+        Song song401 = new Song("Smells like Teen Spirit", "3:79", album4, "https://www.youtube.com/embed/hTWKbfoikeg");
+        Song song402 = new Song("In BLoom", "3:79", album4, "Cygnus.com");
+        Song song403 = new Song("Come As You Are", "3:79", album4, "Cygnus.com");
+        Song song404 = new Song("Breed", "3:79", album4, "Cygnus.com");
+        Song song405 = new Song("Lithium", "3:79", album4, "Cygnus.com");
+        Song song406 = new Song("Polly", "3:79", album4, "Cygnus.com");
+        Song song407 = new Song("Territorial Pissings", "3:79", album4, "Cygnus.com");
+        Song song408 = new Song("Drain You", "3:79", album4, "Cygnus.com");
+        Song song409 = new Song("Lounge Act", "3:79", album4, "Cygnus.com");
+        Song song410 = new Song("Stay Away", "3:79", album4, "Cygnus.com");
+        Song song411 = new Song("On A Plain", "3:79", album4, "Cygnus.com");
+        Song song412 = new Song("Endless Nameless", "3:79", album4, "Cygnus.com");
+        Song song513 = new Song("Nice To know you", "3:79", album5, "https://www.youtube.com/embed/QQ8Fx3IECWY");
+        Song song514 = new Song("Circles", "3:79", album5, "Cygnus.com");
+        Song song515 = new Song("Wish You Were Here", "3:79", album5, "Cygnus.com");
+        Song song516 = new Song("Just A Phase", "3:79", album5, "Cygnus.com");
+        Song song517 = new Song("11am", "3:79", album5, "Cygnus.com");
+        Song song601 = new Song("What Up Man", "3:79", album6, "https://www.youtube.com/embed/vM3EDcXBbUU");
+        Song song602 = new Song("One Two", "3:79", album6, "Cygnus.com");
+        Song song603 = new Song("Mikey Rocks ", "3:79", album6, "Cygnus.com");
+        Song song604 = new Song("88", "3:79", album6, "Cygnus.com");
+        Song song605 = new Song("Black Mags", "3:79", album6, "Cygnus.com");
+        Song song607 = new Song("A Little Bit Cooler", "3:79", album6, "Cygnus.com");
+        Song song608 = new Song("Gold and Pager", "3:79", album6, "Cygnus.com");
+        songRepo.save(song101);
+        songRepo.save(song102);
+        songRepo.save(song103);
+        songRepo.save(song104);
+        songRepo.save(song105);
+        songRepo.save(song106);
+        songRepo.save(song107);
+        songRepo.save(song108);
+        songRepo.save(song109);
+        songRepo.save(song201);
+        songRepo.save(song202);
+        songRepo.save(song203);
+        songRepo.save(song204);
+        songRepo.save(song205);
+        songRepo.save(song206);
+        songRepo.save(song207);
+        songRepo.save(song208);
+        songRepo.save(song209);
+        songRepo.save(song301);
+        songRepo.save(song302);
+        songRepo.save(song303);
+        songRepo.save(song304);
+        songRepo.save(song305);
+        songRepo.save(song401);
+        songRepo.save(song402);
+        songRepo.save(song403);
+        songRepo.save(song404);
+        songRepo.save(song405);
+        songRepo.save(song406);
+        songRepo.save(song407);
+        songRepo.save(song408);
+        songRepo.save(song409);
+        songRepo.save(song410);
+        songRepo.save(song411);
+        songRepo.save(song412);
+        songRepo.save(song513);
+        songRepo.save(song514);
+        songRepo.save(song515);
+        songRepo.save(song516);
+        songRepo.save(song517);
+        songRepo.save(song601);
+        songRepo.save(song602);
+        songRepo.save(song603);
+        songRepo.save(song604);
+        songRepo.save(song605);
+        songRepo.save(song607);
+        songRepo.save(song608);
+    }
+
+}
