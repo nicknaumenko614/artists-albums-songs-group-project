@@ -19,7 +19,7 @@ const renderSong = (element, song, albumId, artistId) => {
   `
     const backToAlbumButton = document.createElement('button');
     backToAlbumButton.innerText = "Back to Album"
-    backToAlbumButton.classList.add = "back__button"
+    backToAlbumButton.classList.add ('backButton');
     backToAlbumButton.addEventListener('click', () => {
         fetchAlbumById(albumId)
             .then(album => {
@@ -29,7 +29,7 @@ const renderSong = (element, song, albumId, artistId) => {
 
     const deleteSongButton = document.createElement('button');
     deleteSongButton.innerText = "Delete This Song"
-    deleteSongButton.classList.add = "delete__button"
+    deleteSongButton.classList.add ('deleteButton');
     deleteSongButton.addEventListener('click', () => {
         deleteSong(song.id, albumId)
             .then(album => {
@@ -49,7 +49,7 @@ const renderSong = (element, song, albumId, artistId) => {
     const commentDisplay = document.createElement('section');
     commentDisplay.innerHTML = '<h2>Comments for the song:</h2>'
 
-    addCommentToSong(element, song.id)
+    addCommentToSong(element, song.id, albumId, artistId)
 
 
     // const backHomeLink = document.createElement('a');
@@ -69,28 +69,30 @@ const renderSong = (element, song, albumId, artistId) => {
     // element.append(backHomeLink)
 }
 
-function addCommentToSong(element, songId) {
-
+function addCommentToSong(element, songId,albumId, artistId) {
+    const div = document.createElement("div")
+    div.classList.add("inputForm")
     const textInput = document.createElement('input');
     textInput.type = 'textarea';
     textInput.placeholder = 'Enter Your Comment';
     textInput.classList.add('song__comment');
-    element.append(textInput);
+    div.append(textInput);
 
 
 
     const submitButton = document.createElement('button');
     submitButton.innerText = "Submit Comment";
     submitButton.classList.add('song__comment-form-submit');
-    element.append(submitButton);
+    div.append(submitButton);
 
     submitButton.addEventListener('click', () => {
     console.log(textInput.value)
         addNewCommentToSong(textInput.value, songId)
             .then(song => {
-                renderSong(element, song)
+                renderSong(element, song, albumId, artistId)
             })
     })
+    element.append(div)
 }
 
 export {renderSong}

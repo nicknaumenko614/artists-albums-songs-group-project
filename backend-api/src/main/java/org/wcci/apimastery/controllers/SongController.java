@@ -32,25 +32,12 @@ public class SongController {
         return songStorage.retrieveSongById(id);
     }
 
-//    @PostMapping("/api/songs/add/")
-//    public Song addSong(@RequestBody Song song) {
-//        return songStorage.save(song);
-//    }
 
     @DeleteMapping("/api/songs/delete/{songId}/{albumId}")
     public Album deleteSong(@PathVariable long songId, @PathVariable long albumId) {
         songStorage.deleteSongById(songId);
         return albumStorage.retrieveAlbumById(albumId);
     }
-
-//    @PatchMapping("/api/songs/{id}/comment/")
-//    public Song addCommentToSong(@PathVariable long id, @RequestBody SongComment comment) {
-//        Song song = songStorage.retrieveSongById(id);
-//        SongComment commentToAdd = new SongComment(comment.getText(), comment.getAuthorName(), song);
-//        commentStorage.addComment(commentToAdd);
-//        return commentToAdd.getSong();
-//    }
-
 
     @PatchMapping("/api/songs/{songId}/comment/")
     public Song addCommentToSong(@PathVariable long songId, @RequestBody String comment) {

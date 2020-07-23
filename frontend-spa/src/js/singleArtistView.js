@@ -35,11 +35,11 @@ const renderArtist = (element, artist) => {
         })
     }
 
-    displayAddAlbumToArtistForm(element, artist.id);
+
 
     const backHomeButton = document.createElement('button');
     backHomeButton.innerText = "Back to HOME - All Artists"
-    backHomeButton.classList.add('back__button')
+    backHomeButton.classList.add ('backButton');
     backHomeButton.addEventListener('click', () => {
         fetchArtists()
             .then(artists => {
@@ -49,7 +49,7 @@ const renderArtist = (element, artist) => {
 
     const deleteArtistButton = document.createElement('button');
     deleteArtistButton.innerText = "Delete This Artist"
-    deleteArtistButton.classList.add = "delete__button"
+    deleteArtistButton.classList.add ('deleteButton');
     console.log(artist.id)
     deleteArtistButton.addEventListener('click', () => {
         deleteArtist(artist.id)
@@ -70,6 +70,8 @@ const renderArtist = (element, artist) => {
     const commentDisplay = document.createElement('section');
     commentDisplay.innerHTML = '<h2>Comments for the artist:</h2>'
 
+
+    displayAddAlbumToArtistForm(element, artist.id);
     addCommentToArtist(element, artist.id)
 
     element.append(albums);
@@ -84,28 +86,30 @@ const renderArtist = (element, artist) => {
 
 
 function displayAddAlbumToArtistForm(element, artistId) {
+    const div = document.createElement("div")
+    div.classList.add("inputForm")
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.placeholder = 'Enter new album name';
     nameInput.classList.add('album__form-name');
-    element.append(nameInput);
+    div.append(nameInput);
 
     const urlInput = document.createElement('input');
     urlInput.type = 'text';
     urlInput.placeholder = 'Enter Album URL';
     urlInput.classList.add('album__form-url');
-    element.append(urlInput);
+    div.append(urlInput);
 
     const recordLabel = document.createElement('input');
     recordLabel.type = 'text';
     recordLabel.placeholder = 'Enter Record Label';
     recordLabel.classList.add('album__form-recordlabel');
-    element.append(recordLabel);
+    div.append(recordLabel);
 
     const submitButton = document.createElement('button');
     submitButton.innerText = "Submit New Album";
     submitButton.classList.add('album__form-submit');
-    element.append(submitButton);
+    div.append(submitButton);
 
    submitButton.addEventListener('click', () => {
         const newAlbum = {
@@ -118,24 +122,27 @@ function displayAddAlbumToArtistForm(element, artistId) {
                 renderArtist(element, artist)
             })
     })
+    element.append(div)
 
     
 }
 
 function addCommentToArtist(element, artistId) {
+    const div = document.createElement("div")
+    div.classList.add("inputForm")
 
     const textInput = document.createElement('input');
     textInput.type = 'textarea';
     textInput.placeholder = 'Enter Your Comment';
     textInput.classList.add('album__comment');
-    element.append(textInput);
+    div.append(textInput);
 
 
 
     const submitButton = document.createElement('button');
     submitButton.innerText = "Submit Comment";
     submitButton.classList.add('album__comment-form-submit');
-    element.append(submitButton);
+    div.append(submitButton);
 
     submitButton.addEventListener('click', () => {
         console.log(textInput.value)
@@ -144,6 +151,7 @@ function addCommentToArtist(element, artistId) {
                 renderArtist(element, artist)
             })
     })
+    element.append(div)
 }
 
 export {renderArtist}

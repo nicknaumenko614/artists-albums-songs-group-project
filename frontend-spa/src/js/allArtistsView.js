@@ -11,6 +11,7 @@ const renderAllArtists = (element, artists) => {
            </section>   
         `;
     const artistsList = document.createElement('ul')
+    artistsList.classList.add("allArtistsList")
 
     for (let i = 0; i < artists.length; i++) {
         const li = document.createElement('li');
@@ -36,22 +37,24 @@ export {
 }
 
 function displayNewArtistForm(element) {
+    const div = document.createElement("div")
+    div.classList.add("inputForm")
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.placeholder = 'Enter new artist name';
     nameInput.classList.add('artist__form-name');
-    element.append(nameInput);
+    div.append(nameInput);
 
     const urlInput = document.createElement('input');
     urlInput.type = 'text';
     urlInput.placeholder = 'Enter Image URL';
     urlInput.classList.add('artist__form-url');
-    element.append(urlInput);
+    div.append(urlInput);
 
     const submitButton = document.createElement('button');
     submitButton.innerText = "Submit New Artist";
     submitButton.classList.add('artist__form-submit');
-    element.append(submitButton);
+    div.append(submitButton);
 
     submitButton.addEventListener('click', () => {
         const newArtist = {
@@ -63,4 +66,5 @@ function displayNewArtistForm(element) {
                 renderAllArtists(element, artists)
             })
     })
+    element.append(div)
 }

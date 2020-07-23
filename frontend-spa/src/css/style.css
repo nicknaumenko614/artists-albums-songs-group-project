@@ -38,6 +38,7 @@ h1{
 }
 ul{
     font-family: 'Roboto', sans-serif;
+    margin-bottom: 2em;
 }
 ol{
     font-family: 'Roboto', sans-serif;
@@ -71,6 +72,23 @@ label {
 }
 input{
     margin-bottom: 1em;
+}
+.inputForm {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-bottom: 2em;
+
+
+}
+
+button {
+    margin-bottom: 1em;
+}
+
+.deleteButton {
+    margin-left: 5px;
+    color: #ca3a11;
 }
 
 
