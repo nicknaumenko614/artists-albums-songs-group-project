@@ -14,7 +14,7 @@ const renderAlbum = (element, album, artistId) => {
     <section class="album">
       <h2 class="album__name">${album.albumName}</h2>
       <h4 class="album__record-label">Record Label: ${album.recordLabel}</h4> 
-      <img src="${album.imageUrl}" alt="Artist Image" width="300">
+      <img src="${album.imageUrl}" alt="Album Image" width="300">
       <br>
       <h2>Please select a song from the ${album.albumName} album:</h2>
                 

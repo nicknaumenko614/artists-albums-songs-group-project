@@ -32,7 +32,7 @@ public class Populator implements CommandLineRunner {
         artistRepo.save(artist3);
         artistRepo.save(artist4);
         artistRepo.save(artist5);
-        Album album1 = new Album("Vulnicara", "Capital", "https://i.guim.co.uk/img/media/04a97c275e6dd86c3a7e85eb6c735c489ea15b9e/0_0_2400_1440/master/2400.jpg", artist1);
+        Album album1 = new Album("Vulnicara", "Capital", "https://diy-magazine.s3.amazonaws.com/d/diy/Artists/B/Bjork/bjork_vulnicura_alt.jpg", artist1);
         Album album2 = new Album("Homogenic", "Capitol", "https://images-na.ssl-images-amazon.com/images/I/7104H7MyhNL._SX425_.jpg", artist1);
         Album album3= new Album("Francis The Mute", "Universal", "https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Frances_the_Mute.png/220px-Frances_the_Mute.png",artist2);
         Album album4 = new Album("Nevermind", "Sup Pop", "https://images.app.goo.gl/tSpq1oHCifhKpGG2A",artist3);
