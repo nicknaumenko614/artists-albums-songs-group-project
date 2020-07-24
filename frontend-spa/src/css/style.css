@@ -1,10 +1,9 @@
-/* font-family: 'Roboto', sans-serif;
-font-family: 'Ubuntu', sans-serif; */
+
 body{
     
     background-image: url(/frontend-spa/src/images/headphones.jpeg) ;
     background-size: 100% ;
-    
+
     color: white;
 }
 
@@ -85,6 +84,10 @@ input{
     margin: 5px;
     text-align: center;
     
+}
+
+.singleCommentItem:hover {
+    background-color: rgba(169, 169, 169, 0.158);
 }
 
 button {
