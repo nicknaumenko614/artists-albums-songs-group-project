@@ -63,7 +63,7 @@ public class Populator implements CommandLineRunner {
         Song song208 = new Song("Alarm Call", "3:79", album2, "Cygnus.com");
         Song song209 = new Song("All is Full of Love", "3:79", album2, "Cygnus.com");
         Song song301 = new Song("Cygnus....Vismund Cygnus", "3:79", album3, "https://www.youtube.com/embed/FVAvBtXqCNY");
-        Song song302 = new Song("The Widow", "3:79", album3, "Cygnus.com");
+        Song song302 = new Song("The Widow", "3:79", album3, "https://www.youtube.com/embed/a2NVj7otnT0");
         Song song303 = new Song("L'Via L'Viaquez", "3:79", album3, "Cygnus.com");
         Song song304 = new Song("Miranda That Ghost Just Isn't Holy Anymore", "3:79", album3, "Cygnus.com");
         Song song305 = new Song("Cassandra Gemini", "3:79", album3, "Cygnus.com");

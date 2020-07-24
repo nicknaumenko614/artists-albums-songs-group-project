@@ -12,9 +12,9 @@ const renderArtist = (element, artist) => {
     element.innerHTML = `
 
       <section class="artist">
-        <h2 class="artist__name">${artist.artistName}</h2>
+        <h2 class="artist__name">Artist: ${artist.artistName}</h2>
         <img src="${artist.imageUrl}" alt="Artist Image" width="300">  
-       
+      
         <br>
         <h2>Please select from ${artist.artistName}'s Albums below:</h2>
                   
@@ -59,9 +59,11 @@ const renderArtist = (element, artist) => {
     })
 
     const comments = document.createElement('section');
+    comments.classList.add ('commentsDisplay')
     if (artist.comments != null) {
         artist.comments.forEach((comment) => {
             const li = document.createElement('li');
+            li.classList.add('singleCommentItem')
             li.innerText = JSON.parse(comment);
             comments.append(li);
         })
@@ -71,19 +73,36 @@ const renderArtist = (element, artist) => {
     commentDisplay.innerHTML = '<h2>Comments for the artist:</h2>'
 
 
-    displayAddAlbumToArtistForm(element, artist.id);
-    addCommentToArtist(element, artist.id)
+
 
     element.append(albums);
+    displayAddAlbumToArtistForm(element, artist.id);
     element.append(backHomeButton);
     element.append(deleteArtistButton);
+
     element.append(commentDisplay);
     element.append(comments);
 
-
+    addCommentToArtist(element, artist.id)
 }
 
-
+// function displayNavBar(element) {
+//     const headerNav = document.createElement("header")
+//     headerNav.classList.add("topnav")
+//
+//     const homeLink = document.createElement("a");
+//     homeLink.innerText = "Back to HOME - All Artists";
+//     homeLink.classList.add("homeLink");
+//     headerNav.append(homeLink)
+//
+//     homeLink.addEventListener('click', () => {
+//         fetchArtists()
+//             .then(artists => {
+//                 renderAllArtists(library, artists)
+//             })
+//     })
+//     element.append(headerNav)
+// }
 
 function displayAddAlbumToArtistForm(element, artistId) {
     const div = document.createElement("div")
@@ -108,7 +127,7 @@ function displayAddAlbumToArtistForm(element, artistId) {
 
     const submitButton = document.createElement('button');
     submitButton.innerText = "Submit New Album";
-    submitButton.classList.add('album__form-submit');
+    submitButton.classList.add('submitButton');
     div.append(submitButton);
 
    submitButton.addEventListener('click', () => {

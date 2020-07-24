@@ -6,13 +6,14 @@ import {patchNewSongToAlbum} from "./apiHelper.js";
 import {renderArtist} from "./singleArtistView.js";
 import {deleteAlbum} from "./apiHelper.js"
 import {addNewCommentToAlbum} from "./apiHelper.js";
-
+import {fetchAlbums} from "./apiHelper.js";
+import {renderAllAlbums} from "./allAlbumsView.js";
 
 const renderAlbum = (element, album, artistId) => {
     clearElementChildren(element);
     element.innerHTML = `
     <section class="album">
-      <h2 class="album__name">${album.albumName}</h2>
+      <h2 class="album__name">Album: ${album.albumName}</h2>
       <h4 class="album__record-label">Record Label: ${album.recordLabel}</h4> 
       <img src="${album.imageUrl}" alt="Album Image" width="300">
       <br>
@@ -34,7 +35,7 @@ const renderAlbum = (element, album, artistId) => {
         })
     }
 
-    displayAddSongToAlbumForm(element, album.id, artistId);
+
 
     const backToArtistButton = document.createElement('button');
     backToArtistButton.innerText = "Back to Artist"
@@ -56,6 +57,8 @@ const renderAlbum = (element, album, artistId) => {
             });
     })
 
+
+
     // const backHomeLink = document.createElement('a');
     // backHomeLink.innerText = "View All Albums in Playlist"
     // backHomeLink.addEventListener('click', () => {
@@ -64,10 +67,15 @@ const renderAlbum = (element, album, artistId) => {
     //             renderAllAlbums(library, albums)
     //         });
     // })
+
+
+
     const comments = document.createElement('section');
+    comments.classList.add ('commentsDisplay')
     if (album.comments != null) {
         album.comments.forEach((comment) => {
             const li = document.createElement('li');
+            li.classList.add('singleCommentItem')
             li.innerText = JSON.parse(comment);
             comments.append(li);
         })
@@ -78,17 +86,15 @@ const renderAlbum = (element, album, artistId) => {
 
 
 
-
-    addCommentToAlbum(element, album.id, artistId)
-
-
-
     element.append(songs);
+    displayAddSongToAlbumForm(element, album.id, artistId);
     element.append(backToArtistButton);
     element.append(deleteAlbumButton);
     element.append(commentDisplay);
     element.append(comments);
-    //element.append(backHomeLink)
+
+    // element.append(backHomeLink)
+    addCommentToAlbum(element, album.id, artistId)
 }
 
 function displayAddSongToAlbumForm(element, albumId, artistId) {
@@ -114,7 +120,7 @@ function displayAddSongToAlbumForm(element, albumId, artistId) {
 
     const submitButton = document.createElement('button');
     submitButton.innerText = "Submit New Song";
-    submitButton.classList.add('song__form-submit');
+    submitButton.classList.add('submitButton');
     div.append(submitButton);
 
     submitButton.addEventListener('click', () => {

@@ -1,9 +1,12 @@
 import {clearElementChildren} from "./utils.js";
 import {renderArtist} from "./singleArtistView.js";
 import {postNewArtist} from "./apiHelper.js";
+import {fetchArtists} from "./apiHelper.js";
+import {library} from "./app.js";
 
 const renderAllArtists = (element, artists) => {
     clearElementChildren(element);
+
 
     element.innerHTML = `
          <section class = "artists">
@@ -29,16 +32,33 @@ const renderAllArtists = (element, artists) => {
     ;
 
     displayNewArtistForm(element);
-}
 
 
-export {
-    renderAllArtists
+
+
+// function displayNavBar(element) {
+//     const headerNav = document.querySelector(".header")
+//     headerNav.classList.add("topnav")
+//
+//     const homeLink = document.createElement("a");
+//     homeLink.innerText = "Back to HOME - All Artists";
+//     homeLink.classList.add("homeLink");
+//     headerNav.append(homeLink)
+//
+//     homeLink.addEventListener('click', () => {
+//         fetchArtists()
+//             .then(artists => {
+//                 renderAllArtists(library, artists)
+//             })
+//     })
+//     element.append(headerNav)
 }
+
 
 function displayNewArtistForm(element) {
     const div = document.createElement("div")
     div.classList.add("inputForm")
+
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.placeholder = 'Enter new artist name';
@@ -53,7 +73,7 @@ function displayNewArtistForm(element) {
 
     const submitButton = document.createElement('button');
     submitButton.innerText = "Submit New Artist";
-    submitButton.classList.add('artist__form-submit');
+    submitButton.classList.add('submitButton');
     div.append(submitButton);
 
     submitButton.addEventListener('click', () => {
@@ -67,4 +87,8 @@ function displayNewArtistForm(element) {
             })
     })
     element.append(div)
+}
+
+export {
+    renderAllArtists
 }

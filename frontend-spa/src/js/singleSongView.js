@@ -11,7 +11,7 @@ const renderSong = (element, song, albumId, artistId) => {
         
       <section class="song">
         <br>
-        <h2 class="song__name">${song.songName}</h2>
+        <h2 class="song__name">Song: ${song.songName}</h2>
         <iframe width="560" height="315" src="${song.imageUrl}"?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h4 class="song__duration">${song.duration}</h4>    
         <br>      
@@ -38,9 +38,11 @@ const renderSong = (element, song, albumId, artistId) => {
     })
 
     const comments = document.createElement('section');
+    comments.classList.add ('commentsDisplay')
     if (song.comments != null) {
         song.comments.forEach((comment) => {
             const li = document.createElement('li');
+            li.classList.add('singleCommentItem')
             li.innerText = JSON.parse(comment);
             comments.append(li);
         })
