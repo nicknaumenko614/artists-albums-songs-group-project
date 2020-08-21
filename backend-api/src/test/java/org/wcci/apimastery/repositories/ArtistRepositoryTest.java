@@ -39,10 +39,10 @@ public class ArtistRepositoryTest {
     public void saveShouldBeAbleToUpdateArtistInfo() {
         Artist testArtist = new Artist("Test Artist", "www.testurl.com");
         artistRepo.save(testArtist);
-        Album album1 = new Album("Vulnicara", "Capital", "www.google.com", testArtist);
-        Album album2 = new Album("Francis", "Columbia", "www.google.com", testArtist);
-        albumRepo.save(album1);
-        albumRepo.save(album2);
+//        Album album1 = new Album("Vulnicara", "Capital", "www.google.com", testArtist);
+//        Album album2 = new Album("Francis", "Columbia", "www.google.com", testArtist);
+//        albumRepo.save(album1);
+//        albumRepo.save(album2);
 
         String newArtistName = "New arbitrary name";
         testArtist.setArtistName(newArtistName);
